@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box1 {
+        width: 150px;
+        height: 150px;
+        padding: 10px;
+        background-color: aqua;
+        border: 1px solid #333;
+    }
+
+    .box2 {
+        width: 150px;
+        height: 150px;
+        padding: 10px;
+        border: 1px solid #333;
+        box-sizing: border-box;
+        /* border padding 포함 150px */
+    }
+
+    .box3 {
+        margin: 10px 0;
+        width: 150px;
+        height: 150px;
+        border: 1px dashed #333;
+        border-radius: 20px 0 20px 0;
+    }
+
+    .box4 {
+        width: 150px;
+        height: 150px;
+        border: 1px solid #333;
+        border-radius: 10px;
+    }
+
+    .box5 {
+        width: 150px;
+        height: 150px;
+        border: 1px double #333;
+        border-radius: 75px;
+    }
+
+    .dog1 {
+        border-radius: 30px;
+    }
+
+    .box6 {
+        width: 150px;
+        height: 150px;
+        background-color: darkcyan;
+        /* box-shadow: 5px 5px 5px red; */
+        /* box-shadow: -5px 5px 5px red; 첫번째는 음수를 주면 왼쪽 양수를 주면 오른쪽*/
+        /* box-shadow: 5px -5px 5px red; 두번째는 음수를 주면 위쪽 양수를 주면 아래쪽*/
+        /* box-shadow: 5px 5px 20px red; 세번째는 퍼짐 효과*/
+    }
+</style>
+
+<body>
+    <div class="box1">박스1</div>
+    <div class="box2">박스2</div>
+    <div class="box3">박스3</div>
+    <div class="box4">박스4</div>
+    <div class="box5">박스5</div>
+    <img src="images/dog1.jpg" alt="강아지1" class="dog1">
+    <div class="box6">박스6</div>
+</body>
+
+</html>
