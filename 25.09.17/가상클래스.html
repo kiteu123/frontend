@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a:visited {
+            color: darkblue;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        /* 블릿 숨기기 */
+        ul li {
+            float: left;
+        }
+
+        /*왼쪽부터 배열 */
+        ul li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* 밑줄 제거 */
+
+        ul li:hover a {
+            background-color: yellow;
+            text-decoration: underline;
+        }
+
+        ul li a:active {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="https://www.google.com" target="_blank">메뉴1</a></li>
+        <li><a href="#">메뉴2</a></li>
+        <li><a href="#">메뉴3</a></li>
+        <li><a href="#">메뉴4</a></li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .container {
+            width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            width: 100%;
+            /* 생략 가능 */
+            height: 200px;
+            background-color: pink;
+        }
+
+        header .logo {
+            float: left;
+            margin-left: 50px;
+            margin-top: 50px;
+        }
+
+        header nav {
+            float: right;
+            margin-top: 60px;
+            margin-right: 70px;
+        }
+
+        header nav ul li {
+            float: left;
+        }
+
+        header nav ul li a {
+            display: block;
+            /* a는 인라인요소이기 때문에 넓이와 높이를 적용할 수 없다. 그러나 display:block을 통해 블럭 요소로 바꿀 수 있다. */
+            padding: 15px;
+            background-color: yellow;
+        }
+
+        header nav ul li a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .main {
+            width: 900px;
+            height: 550px;
+            background-color: #ccc;
+        }
+
+        section {
+            width: 650px;
+            height: 550px;
+            background-color: yellowgreen;
+            float: left;
+        }
+
+        aside {
+            width: 250px;
+            height: 550px;
+            background-color: aqua;
+            float: left;
+        }
+
+        footer {
+            width: 100%;
+            height: 70px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            /* padding: 20px 0 0 0; */
+            /* 높이가 70px인 한줄로 된 글씨를 세로 중앙 정렬하려면 */
+            line-height: 70px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo"><a href="#">Thejoeun</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Menu1</a></li>
+                    <li><a href="#">Menu2</a></li>
+                    <li><a href="#">Menu3</a></li>
+                    <li><a href="#">Menu4</a></li>
+                    <li><a href="#">Menu5</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="main">
+            <section></section>
+            <aside></aside>
+        </div>
+        <footer>
+            2025 &copy; Copyright Design By Yeonwoo
+        </footer>
+    </div>
+
+</body>
+
+</html>
