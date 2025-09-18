@@ -55,17 +55,44 @@
 
         .section2 li {
             float: left;
-          
+
         }
-        [class*="img"]{
+
+        [class*="img"] {
             margin: 10px 0 0 25px;
         }
-        .smallbox1{
+
+        .smallbox1 {
+           
             height: 150px;
             border: 1px solid black;
-            padding: 10px;
+            padding: 0px;
+            margin:0 auto;
         }
-     
+
+        .section2 .smallbox {
+            overflow: hidden;
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        .section2 .smallbox li {
+            float: left;
+            width: 100px;
+            text-align: center;
+            
+            text-align: center;
+        }
+
+        .section2 .smallbox li img {
+            display: block;
+            margin: 0 auto 5px;
+            width: 50px;
+            height: auto;
+        }
+        .section1 .bigbox li:hover{
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 5);
+        }
     </style>
 </head>
 
@@ -99,7 +126,7 @@
     <section class="section2">
         <ul class="smallbox">
             <li class="smallbox1">
-                <h1>금융상품</h1>
+                <h2>금융상품</h1>
                 <p>바로가기></p>
             </li>
 
@@ -112,27 +139,27 @@
                 <p>&nbsp;&nbsp;&nbsp;펀드</p>
             </li>
             <li>
-                <p><img src="images/대출.png" alt="#"  class="img"></p>
+                <p><img src="images/대출.png" alt="#" class="img"></p>
                 <p>&nbsp;&nbsp;&nbsp;대출</p>
             </li>
             <li>
-                <p><img src="images/신탁.png" alt="#"  class="img"></p>
+                <p><img src="images/신탁.png" alt="#" class="img"></p>
                 <p>&nbsp;&nbsp;&nbsp;신탁</p>
             </li>
             <li>
-                <p><img src="images/ISA.png" alt="#"  class="img"></p>
+                <p><img src="images/ISA.png" alt="#" class="img"></p>
                 <p>&nbsp;&nbsp;&nbsp;ISA</p>
             </li>
             <li>
-                <p><img src="images/보험공제.png" alt="#"  class="img"></p>
+                <p><img src="images/보험공제.png" alt="#" class="img"></p>
                 <p>&nbsp;&nbsp;&nbsp;보험/공제</p>
             </li>
             <li>
-                <p><img src="images/골드.png" alt="#"  class="img"></p>
+                <p><img src="images/골드.png" alt="#" class="img"></p>
                 <p>&nbsp;&nbsp;&nbsp;골드</p>
             </li>
             <li>
-                <p><img src="images/외화예금.png" alt="#"  class="img"></p>
+                <p><img src="images/외화예금.png" alt="#" class="img"></p>
                 <p>&nbsp;&nbsp;&nbsp;외화예금</p>
             </li>
 
