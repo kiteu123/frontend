@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커피의 종류</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .coffebox {
+            display: flex;
+            gap: 30px;
+            max-width: 2100px;
+            margin: 0 auto;
+            background-color: #ccc;
+            padding: 30px;
+            justify-content: center;
+            flex-wrap: nowrap; /* 필요 시 wrap 가능 */
+        }
+
+        .coffe {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            border: 1px solid #333;
+            background-color: white;
+        }
+
+        .scoffe-img {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid #000;
+        }
+
+        .scoffe-desc {
+            background-color: pink;
+            font-size: 18px;
+            padding: 10px;
+            overflow: auto;
+            height: 200px;
+        }
+
+        .scoffe-desc p:first-child {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>커피의 종류</h1>
+    <div class="coffebox">
+
+        <div class="coffe">
+            <div class="scoffe-img" style="background-image: url(images/americano.jpg);"></div>
+            <div class="scoffe-desc">
+                <p>헛개리카노</p>
+                <p>Oriental Raisin-Tea Americano</p>
+                <p>국내산 헛개수와 메가MGC커피만의 아메리카노를 더해 고소한 맛이 조화로운 블렌딩 커피</p>
+            </div>
+        </div>
+
+        <div class="coffe">
+            <div class="scoffe-img" style="background-image: url(images/blueberryyogurt.jpg);"></div>
+            <div class="scoffe-desc">
+                <p>블루베리요거트스무디</p>
+                <p>Blueberry Yogurt Smoothie</p>
+                <p>새콤달콤한 블루베리와 산뜻한 요거트가 만나 조화로운 스무디</p>
+            </div>
+        </div>
+
+        <div class="coffe">
+            <div class="scoffe-img" style="background-image: url(images/zeroboostade.jpg);"></div>
+            <div class="scoffe-desc">
+                <p>제로 부스트 에이드</p>
+                <p>ZERO SUGAR Energy-Drink Ade</p>
+                <p>지친 현대인들에게 필요한 한 잔의 에너지! 타우린 1,000mg이 들어가 활력이 충전되는 에너지드링크맛 제로 칼로리 에이드<br><br>*대체당(알룰로스 등)을 과도하게 섭취 시 개인에 따라 복통 및 설사 등을 유발 할 수 있으니 주의하세요.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
