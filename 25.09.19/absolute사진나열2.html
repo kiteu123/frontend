@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            position: relative;
+            width: 830px;
+            height: 620px;
+            border: 1px solid red;
+            margin: 100px auto 0;
+        }
+
+        .box {
+            width: 200px;
+
+            position: absolute;
+            display: none;
+        }
+
+        .box img {
+            display: block;
+            width: 100%;
+
+        }
+
+        .box1 {
+            display: block;
+            left: 0;
+            top: 0;
+            width: 200px;
+
+        }
+
+
+        .box2 {
+            display: block;
+            left: 0;
+            top: 210px;
+        }
+
+        .box3 {
+            display: block;
+            width: 200px;
+
+            left: 210px;
+            top: 0;
+        }
+
+        .box4 {
+            display: block;
+            left: 420px;
+            top: 0;
+        }
+
+        .box5 {
+            display: block;
+            right: 0;
+            top: 0;
+        }
+
+        .box6 {
+            display: block;
+            width: 410px;
+            right: 0;
+            top: 210px;
+
+        }
+
+        .box7 {
+            display: block;
+            left: 0;
+            top: 420px;
+        }
+
+        .box8 {
+            display: block;
+            width: 410px;
+            left: 210px;
+            top: 420px;
+
+        }
+
+        .box9 {
+            display: block;
+            right: 0;
+            top: 420px;
+        }
+
+        .box::after {
+            content: '';
+            position: absolute;
+            background-color: rgba(0, 0, 255, 0.5);
+            transition: all 0.4s ease;
+            z-index: 5;
+        }
+
+        .box1::after,
+        .box2::after,
+        .box3::after,
+        .box4::after,
+        .box5::after,
+        .box7::after,
+        .box9::after {
+            width: 0%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .box1:hover::after,
+        .box2:hover::after,
+        .box3:hover::after,
+        .box4:hover::after,
+        .box5:hover::after,
+        .box7:hover::after,
+        .box9:hover::after {
+            width: 100%;
+        }
+
+
+        .box6::after,
+        .box8::after {
+            width: 100%;
+            height: 0%;
+            top: 0;
+            left: 0;
+        }
+
+        .box6:hover::after,
+        .box8:hover::after {
+            
+            height: 100%;
+        }
+
+        .box p {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            
+            left: 0%;
+            top: 0%;
+            color: #fff;
+            text-align: center;
+            box-sizing: border-box;
+            z-index: 10;
+            transition: all 0.4s;
+            opacity: 0;
+            /* 불투명도 0 안보임, 1 보임 */
+            font-size: 12px;
+            padding: 20px;
+            background: url(images/more.png) no-repeat 50% 80%;
+            
+
+        }
+
+        .box:hover p {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box box1">
+            <img src="images_hite/01.png" alt="">
+            <p>국내유일 청정대나무 숯으로 <br />5번 걸러 더 깨끗해진 <br>참이슬fresh</p>
+        </div>
+        <div class="box box2">
+            <img src="images_hite/05.png" alt="">
+            <p>하이트진로의 사회공헌 활동은 <br>모두가 즐겁고 행복한 세상을 <br>만들기 위한 실천입니다.</p>
+        </div>
+        <div class="box box3">
+            <img src="images_hite/02.jpg" alt="">
+            <p>청정라거 <br />시대개막 <br>Terra</p>
+        </div>
+        <div class="box box4">
+            <img src="images_hite/03.jpg" alt="">
+            <p>언론 속 하이트진로의 <br />다양한 소식을 알려 드립니다.</p>
+        </div>
+        <div class="box box5">
+            <img src="images_hite/04.png" alt="">
+            <p>더블 숙성 공법이 만든 부드러우면서 <br>강렬한 맛의 더블 임팩트 라거!</p>
+        </div>
+        <div class="box box6">
+            <img src="images_hite/06.png" alt="">
+            <p>대한민국 맥주의 자존심!<br />ALL NEW 하이트</p>
+        </div>
+        <div class="box box7">
+            <img src="images_hite/07.png" alt="">
+            <p>부드러움의 황금비율 <br />탄생 '진로골드'</p>
+        </div>
+        <div class="box box8">
+            <img src="images_hite/08.png" alt="">
+            <p>하이트진로의 최신 광고영상을 소개합니다.<br />ALL NEW 하이트</p>
+        </div>
+        <div class="box box9">
+            <img src="images_hite/09.jpg" alt="">
+            <p>하이트진로 100주년 기념<br />디지털 역사관 입니다.</p>
+        </div>
+    </div>
+</body>
+
+</html>
