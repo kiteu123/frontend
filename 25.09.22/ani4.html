@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myball {
+            position: relative;
+            left: 10px;
+            height: 100px;
+            width: 100px;
+            border-radius: 50px;
+            border: 1px solid #000;
+            background: url(img/f1.png) no-repeat 50% 50%;
+            animation: myani 3s infinite alternate;
+        }
+
+        @keyframes myani {
+            0% {
+                left: 10px;
+            }
+
+            40% {
+                top: 50px;
+                background: url(img/f2.png) no-repeat 50% 50%;
+            }
+
+            /* 40% 시간에서 100% 시간까지 위치변경 및 이미지 변경 */
+            100% {
+                left: 500px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="myball"></div>
+</body>
+
+</html>
