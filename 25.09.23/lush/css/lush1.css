@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+#header_out {
+    width: 100%;
+    position: relative;
+    z-index: 5;
+}
+
+#header {
+    width: 1200px;
+    height: 250px;
+    border: 1px solid black;
+    margin: 0 auto;
+
+}
+
+#logo {
+    border: 2px solid black;
+    width: 250px;
+    height: 90px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#gnb {
+    float: right;
+    margin-top: 20px;
+    margin-right: 15px;
+    /* position: absolute;
+    right: 15px;
+    top: 20px; */
+}
+
+#gnb ul li {
+    float: left;
+    padding: 0 10px;
+    /* margin-right: 15px;  */
+    background: url(../images/bar.gif) no-repeat 100% 50%;
+}
+
+#gnb ul li:last-child {
+    background: none;
+}
+
+#nav_Icon {
+    float: left;
+    margin-left: 25px;
+    margin-top: 20px;
+    /* position: absolute;
+    left: 15px;
+    top: 20px; */
+}
+
+#nav_Icon ul li {
+    float: left;
+    margin-left: 15px;
+}
+
+.main_nav {
+    position: absolute;
+    width: 100%;
+    top: 220px;
+    left: 0;
+}
+
+.main_nav>ul {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.main_nav>ul>li {
+    float: left;
+    text-align: center;
+}
+
+.main_nav ul li a {
+    display: block;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.main_nav ul li ul {
+    background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    height: 0px;
+    padding: 0px;
+    overflow: hidden;
+    transition: all 0.35s;
+}
+
+.main_nav ul:hover li ul {
+   height: 240px;
+   padding: 10px 0;
+}
+
+#main {
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+}
+
+.shadow {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    height: 30px;
+    width: 100%;
+    transition: all 0.35s;
+}
+.main_nav ul:hover + .shadow{
+    height: 260px;
+    border-bottom: 1px solid black;
+}

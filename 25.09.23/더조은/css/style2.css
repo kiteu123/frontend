@@ -1,0 +1,117 @@
+*{margin: 0; padding: 0;}
+
+ul li{
+    list-style: none;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+
+.header_out{
+    width: 100%;
+    position: relative;
+    z-index: 5;
+}
+header{
+    width: 1200px;
+    height: 250px;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+.logo{
+    border: 2px solid black;
+    width: 500px;
+    height: 90px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.sns li{
+    float: left;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.lnb li{
+    float: right;
+    padding: 0 10px;
+    background: url(../images/bar.png) no-repeat 100% 50%;
+}
+.lnb li:first-child{
+    background: none;
+}
+
+.main_menu{
+    position: absolute;
+    width: 100%;
+    top: 200px;
+    left: 0;
+    margin-bottom: 0;
+}
+.main_menu >ul{
+    width: 1200px;
+    margin: 0 auto;
+    
+    position: relative;
+    z-index: 10;
+}
+.main_menu>ul>li{
+    float: left;
+    text-align: center;
+}
+.main_menu ul li a{
+    display: block;
+    color: white;
+    width: 240px;
+    height: 50px;
+    line-height: 50px;
+}
+.main_menu >ul >li{
+    background-color: black;
+    color: white;
+    
+}
+.main_menu ul li ul{
+    position: absolute;
+    height: 0px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+.main_menu >ul> li> ul> li>a{
+    color: black;
+}
+.gnb:hover li ul{
+    height: 150px;
+    background-color: antiquewhite;
+}
+.gnb:hover + .shadow{
+    height: 150px;
+    
+}
+
+.main1 img{
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+ .shadow{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: aqua;
+    width: 100%;
+    height: 0;
+    transition: all 0.3s;
+} 
+.main_bg {
+    position: absolute;
+    top: 200px;   
+    left: 0;
+    width: 100%;
+    height: 50px;  
+    background-color: yellow; 
+    z-index: 1;   
+}
