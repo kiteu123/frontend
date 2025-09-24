@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 500px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            
+        }
+        #container div{
+            width: 100px;
+            height: 50px;
+            border: 2px solid black;
+            background-color: #ccc;
+        }
+        #box1{
+            flex : 1 1 0;
+        }
+        #box2{
+            flex : 2 2 0;
+        }
+        #box3{
+            flex : 3 3 0;
+        }
+    </style>
+</head>
+<body>
+     <div id="container">
+        <div id="box1"><p>1</p></div>
+        <div id="box2"><p>2</p></div>
+        <div id="box3"><p>3</p></div>
+    </div>
+</body>
+</html>
