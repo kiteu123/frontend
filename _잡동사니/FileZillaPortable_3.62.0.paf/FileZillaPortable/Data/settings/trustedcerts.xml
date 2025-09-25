@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FileZilla3 version="3.62.0" platform="windows">
+	<InsecureHosts>
+		<Host Port="21">kiteu123.dothome.co.kr</Host>
+	</InsecureHosts>
+</FileZilla3>

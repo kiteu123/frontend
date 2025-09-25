@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.wrap{
+    width: 100%;
+}
+ul,
+li {
+    list-style: none;
+}
+
+ul li a {
+    text-decoration: none;
+    color: black;
+}
+body {
+    font:12px/1.6 'Poiret One';
+    color: #555;;
+}
+
+header{
+    position: fixed;
+    width: 15%;
+    height: 100%;
+    background-color: navy;
+}
+/* 섹션 */
+.cf{
+    position: relative;
+    margin-left: 15%;
+    width: 85%;
+}
+article{
+    position: relative;
+    height: 260px;
+    float: left;
+}
+
+article:nth-child(1){
+    width: 60%;
+    height: 520px;
+    background-color: #ddd;
+}
+article:nth-child(1) {
+    width: 60%;
+    background-color: navy;
+    height: 520px;
+}
+
+article:nth-child(2) {
+    width: 40%;
+    background-color: white;
+}
+
+article:nth-child(3) {
+    width: 20%;
+    background-color: white;
+}
+
+article:nth-child(4) {
+    width: 20%;
+    background-color: white;
+}
+
+article:nth-child(5) {
+    width: 20%;
+    background-color: white;
+}
+
+article:nth-child(6) {
+    width: 40%;
+    background-color: white;
+}
+
+article:nth-child(7) {
+    width: 20%;
+    background-color: white;
+}
+
+article:nth-child(8) {
+    width: 20%;
+    background-color: white;
+}
+
+article:nth-child(9) {
+    width: 40%;
+    background-color: white;
+}
+
+article:nth-child(10) {
+    width: 20%;
+    background-color: white;
+}
+
+article:nth-child(11) {
+    width: 20%;
+    background-color: white;
+}
+
+article:nth-child(12) {
+    width: 20%;
+    background-color: white;
+}
+
+section{
+    transition: all 0.6s;
+}
+
+article {
+    animation: scale1 1s;
+}
+
+@keyframes scale1 {
+    0%{transform: scale(0);}
+    100%{transform: scale(100%);}
+}
+
+header h1{
+    background: url(../images/logo.png) no-repeat 0 0;
+    width: 200px;
+    height: 140px;
+    background-size: contain;
+    text-indent: -9999px;
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    margin-left: -100px;
+}
+.gnb{
+    position: absolute;
+    top:470px;
+    right: 50px;
+}
+.gnb a{
+    display: block;
+    padding: 10px 30px;
+    font-size: 17px;
+    color: white;
+}
+.gnb a:hover{
+    color: skyblue;
+}
+
+.bottom .snsSet.cf{
+    position: absolute;
+    width: 150px;
+    height: 47px;
+    bottom: 100px;
+    right: 50%;
+    margin-right: -80px;
+    font-size: 20px;
+}
+.bottom .snsSet.cf a{
+    float: left;
+    color: white;
+    padding: 5px;
+}
+.bottom .sns.cf{
+    position: absolute;
+    width: 200px;
+    height: 47px;
+    bottom: 50px;
+    right: 50%;
+    margin-right: -80px;
+    font-size: 20px;
+
+}
+.bottom .sns.cf i{
+    float: left;
+    color: white;
+    margin-left: 50px;
+}
+article > div{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+article .bg{
+    background-size: cover;
+    background-position: center;
+}
+article .bg1{
+   background-image: url(../images/1.png);
+
+}
+article .bg2{
+    background-image: url(../images/3.png);
+}
+article .bg3{
+    background-image: url(../images/4.jpg);
+}
+article .bg4{
+    background-image: url(../images/5.jpg);
+}
+article .bg5{
+    background-image: url(../images/6.jpg);
+}
+article .bg6{
+    background-image: url(../images/7.jpg);
+}
+article .bg7{
+    background-image: url(../images/8.png);
+}
+
+article .bg span{
+    font-size: 60px;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+}
+
+article .bg span{
+    transform: scale(10);
+    opacity: 0;
+    transition: all 0.6s;
+}
+article:hover .bg span{
+    transform: scale(1);
+    opacity: 1;
+    color: grey;
+    font-weight: bold;
+}
+
+article .bg1 span{
+    right: 200px;
+    opacity: 0;
+    transform: scale(2) rotateY(0deg);
+    transition: all 0.8s;
+}
+
+article:hover .bg1 span{
+    transform: scale(2) rotateY(360deg);
+}
+
+article .txt{
+    color: #222;
+    box-sizing: border-box;
+    padding: 20px 10px;
+    font-weight: bold;
+    font-size: 17px;
+    z-index: 10;
+}
+article .txt i{
+    font-size: 300px;
+    color: grey;
+    position: absolute;
+    bottom: -70px;
+    right: -200px;
+    opacity: 0;
+}
+article .txt.txt1 img{
+    position: absolute;
+    right: -250px;
+    z-index: -1;
+    transition: all 1s;
+}
+article:hover .txt.txt1 img{
+    opacity: 0.5;
+    right: 50px;
+    
+}
+article:hover .txt.txt2{
+    background-color: rgb(98, 98, 250);
+}
+article .txt.txt2 i{
+    transition: none;
+    color: black;
+    right: 0px;
+    opacity: 1;
+}
+
+article:hover .txt.txt1{
+    background-color: skyblue;
+}
+article:hover .txt.txt3{
+    background-color: yellow;
+}
+
+article:hover .txt.txt4{
+    background-color: green;
+    color: white;
+}
+article:hover .txt.txt5{
+    background-color: black;
+    color: white;
+}
+
+
+
+article .txt, article .txt i{
+    transition: all 1s;
+}
+
+article:hover .txt i{
+    right: 0;
+    opacity: 0.5;
+}
+
+article .txt strong{
+    font-size: 30px;
+    display: block;
+}
