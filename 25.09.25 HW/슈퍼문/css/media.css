@@ -1,3 +1,362 @@
+/* 1000px 이상일 때: 헤더 가로 배치 */
+@media screen and (min-width:1000px) and (max-width:1400px) {
+    header {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 130px;
+        background-color: navy;
+    }
+
+
+    .cf {
+
+        margin-left: 0;
+        width: 100%;
+    }
+
+
+    header h1 {
+        position: absolute;
+        top: 20px;
+        left: 100px;
+        width: 200px;
+        height: 60px;
+    }
+
+
+    .gnb {
+        position: absolute;
+        top: 40px;
+        right: 200px;
+        display: inline-block;
+        width: auto;
+        height: auto;
+    }
+
+    .gnb li {
+        float: left;
+        margin-left: 10px;
+    }
+
+    .gnb li a {
+        font-size: 18px;
+        color: white;
+    }
+
+
+    .bottom .snsSet.cf{
+        position: absolute;
+        top: 30px;
+        right: 100px;
+        display: inline-block;
+    }
+     .bottom .sns.cf{
+        position: absolute;
+        top: 70px;
+        right: 100px;
+        display: inline-block;
+    }
+
+
+}
+
+
+@media screen and (min-width:700px) and (max-width:1000px) {
+    header {
+        position: relative;
+        width: 100%;
+        height: 130px;
+    }
+
+    section {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    header h1 {
+        position: relative;
+        width: 30%;
+        height: 45px;
+        top: 20px;
+        left: 100px;
+
+    }
+
+    .gnb {
+        position: absolute;
+        top: 50px;
+        left: 200px;
+        width: 70%;
+        height: 45px;
+    }
+
+    .gnb li {
+
+        float: left;
+        width: 25%;
+
+
+    }
+
+    .gnb li:nth-child(3) a {
+        margin-left: 30px;
+
+    }
+
+    .gnb li a {
+        text-align: center;
+
+        font-size: 15px;
+    }
+
+    .sns.cf,
+    .snsSet.cf {
+        display: none;
+    }
+
+    .cf {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    article {
+        height: 260px;
+    }
+
+    article .bg1 span {
+        font-size: 30px;
+        right: 90px;
+    }
+
+    article:nth-child(1) {
+        height: 520px;
+        width: 70%;
+
+    }
+
+    article:nth-child(2) {
+        width: 30%;
+        height: 260px;
+    }
+
+
+
+    article:nth-child(3) {
+        width: 30%;
+        height: 260px;
+    }
+
+    article:nth-child(4) {
+        width: 25%;
+        height: 260px;
+    }
+
+    article:nth-child(5) {
+        width: 25%;
+        height: 260px;
+    }
+
+    article:nth-child(6) {
+
+        width: 50%;
+        height: 260px;
+    }
+
+    article:nth-child(7) {
+        width: 50%;
+    }
+
+    article:nth-child(8) {
+        width: 25%;
+
+    }
+
+    article:nth-child(9) {
+        width: 25%;
+
+    }
+
+    article:nth-child(10) {
+        width: 25%;
+    }
+
+    article:nth-child(11) {
+        width: 25%;
+    }
+
+    article:nth-child(12) {
+        background-color: lightgreen;
+        width: 50%;
+    }
+
+    article .txt i {
+        font-size: 200px;
+        color: grey;
+        position: absolute;
+        bottom: -50px;
+        right: -200px;
+        opacity: 0;
+    }
+
+    article .bg.bg6 span {
+        font-size: 50px;
+    }
+
+    article .txt strong {
+        transition: all 0.5s;
+        font-size: 20px;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width:601px) and (max-width:699px) {
+    header {
+        position: relative;
+        width: 100%;
+        height: 130px;
+    }
+
+    section {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    header h1 {
+        position: relative;
+        width: 30%;
+        height: 45px;
+        top: 20px;
+        left: 100px;
+
+    }
+
+    .gnb {
+        position: absolute;
+        top: 10px;
+        left: 180px;
+        width: 70%;
+        height: 45px;
+    }
+
+    .gnb li {
+
+        float: left;
+        width: 25%;
+
+
+    }
+
+    .gnb li:nth-child(3) a {
+        margin-left: 30px;
+
+    }
+
+    .gnb li a {
+        text-align: center;
+
+        font-size: 15px;
+    }
+
+    .sns.cf,
+    .snsSet.cf {
+        display: none;
+    }
+
+    .cf {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    article {
+        height: 200px;
+    }
+
+    article .bg1 span {
+        font-size: 30px;
+        right: 90px;
+    }
+
+    article:nth-child(1) {
+        height: 300px;
+        width: 100%;
+
+    }
+
+    article:nth-child(2) {
+        width: 70%;
+        height: 200px;
+    }
+
+
+
+    article:nth-child(3) {
+        display: none;
+    }
+
+    article:nth-child(4) {
+        width: 30%;
+        height: 200px;
+    }
+
+    article:nth-child(5) {
+        width: 30%;
+        height: 200px;
+    }
+
+    article:nth-child(6) {
+        width: 70%;
+        height: 200px;
+    }
+
+    article:nth-child(7) {
+        display: none;
+    }
+
+    article:nth-child(8) {
+        width: 70%;
+        height: 200px;
+    }
+
+    article:nth-child(9) {
+        width: 30%;
+        height: 200px;
+    }
+
+    article:nth-child(10) {
+        width: 30%;
+    }
+
+    article:nth-child(11) {
+        width: 70%;
+    }
+
+    article:nth-child(12) {
+        display: none;
+    }
+
+    article .txt i {
+        font-size: 200px;
+        color: grey;
+        position: absolute;
+        bottom: -50px;
+        right: -200px;
+        opacity: 0;
+    }
+
+    article .bg.bg6 span {
+        font-size: 50px;
+    }
+
+    article .txt strong {
+        transition: all 0.5s;
+        font-size: 20px;
+        padding: 10px;
+    }
+}
+
+
 @media screen and (min-width:500px) and (max-width:600px) {
     header {
         position: relative;
@@ -117,7 +476,15 @@
         right: -200px;
         opacity: 0;
     }
-   
+
+    article .bg.bg6 span {
+        font-size: 50px;
+    }
+
+    article .txt strong {
+        transition: all 0.5s;
+        font-size: 20px;
+    }
 }
 
 @media screen and (max-width:499px) {

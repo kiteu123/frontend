@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let a = 10;
+        let b = 3;
+        console.log(a + b);
+        console.log(a % b);
+        console.log(a ** b);
+
+
+        let x=5;
+        let y="5";
+        console.log(x == y);   // (1) t
+        console.log(x === y);  // (2) f
+        console.log(x != y);   // (3) f
+        console.log(x !== y);  // (4) t
+
+        // 문제 3. 논리 연산자
+        //다음 코드의 실행 결과를 쓰시오.
+
+        let age = 20;
+        let isStudent = false;
+
+        console.log(age > 18 && isStudent);  // (1) f
+        console.log(age > 18 || isStudent);  // (2) t
+        console.log(!isStudent);             // (3) t
+        //문제 4. 대입(복합 대입) 연산자
+        //아래 코드 실행 후 변수 num의 값은 무엇인가?
+
+        let num = 10;
+        num += 5; // 15
+        num *= 2; // 30
+        num -= 4; // 26
+        num /= 2; // 13
+        console.log(num);  // 13
+        //문제 5. 삼항 연산자
+        //아래 코드 실행 결과를 쓰시오.
+
+        let score = 75;
+        let result = (score >= 80) ? "합격" : "불합격"; // 불합격
+        console.log(result);
+    </script>
+</body>
+
+</html>
