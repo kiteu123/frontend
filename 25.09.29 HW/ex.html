@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{padding: 0; box-sizing: border-box;}
+        .kt-container{
+            position: relative;
+            max-width: 1500px;
+            background-color: antiquewhite;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        a{text-decoration: none; color: #2a2a2a;}
+        .mobile{
+            top: 40px;
+            right: 20px;
+            position: absolute;
+            font-size: 18px;
+        
+        }
+        .kt{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            text-align: left;
+            cursor: pointer;
+        }
+        .ktitem1{
+            background: url(img/img_mobile_esim.png) no-repeat 25% 25%;
+            background-size: contain;
+            border-radius: 20px;
+            background-color: #FFAB60;
+            position: relative;
+            min-width: 450px;
+            height: 700px;
+            
+        }
+        .ktitem2{
+            background: url(img/img_mobile_usim.png) no-repeat 25% 25%;
+            background-size: contain;
+            background-color: #BDD58F;
+            border-radius: 20px;
+            position: relative;
+            min-width: 450px;
+            height: 700px;
+        }
+        .ktitem3{
+            background: url(img/img_mobile_plan.png) no-repeat 30% 30%;
+            background-size: contain;
+            background-color: #89B7DD;
+            border-radius: 20px;
+            position: relative;
+            min-width: 450px;
+            height: 700px;
+        }
+        .ktitem1 .item{
+            position: absolute;
+            bottom: 20px;
+            transform: translateX(5%);
+        }
+        .ktitem2 .item{
+            position: absolute;
+            bottom: 20px;
+            transform: translateX(5%);
+        }
+        .ktitem3 .item{
+            position: absolute;
+            bottom: 20px;
+            transform: translateX(5%);
+        }
+        .item{
+            position: relative;
+            min-width: 400px;
+            height: 150px;
+            background-color: white;
+            border-radius: 20px;
+            padding: 10px 0 0 10px;
+            
+        }
+        .item:after{
+            content: ">";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 36px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="kt-container">
+        <h1>KT망 그대로 이용하는</h1>
+        <p class="mobile"><a href="">모바일 상품 모두보기 ></a></p>
+        <div class="kt">
+            <div class="ktitem1">
+               
+                <div class="item">
+                    <h2>요즘 다 eSIM 개통하는 이유</h2>
+                    <p>실물 유심 구매 없이 <br>지금 바로 개통 가능하니까!</p>
+                </div>
+            </div>
+            <div class="ktitem2">
+                <div class="item">
+                    <h2>유심 구매 A to Z</h2>
+                    <p>온오프라인 구매방법을<br>자세히 알려 드릴게요!</p>
+                </div>
+            </div>
+            <div class=ktitem3>
+                <div class="item">
+                    <h2>이주의 인기 요금제</h2>
+                    <p>오직 스카이라이프에서만<br>만나 보실 수 있어요</p>
+                </div>
+            </div>
+</body>
+
+</html>
