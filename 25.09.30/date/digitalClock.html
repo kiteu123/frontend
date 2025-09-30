@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="clock">
+        <span id="year">0000</span>년
+        <span id="month">00</span>월
+        <span id="date">00</span>일
+        <span id="yoil">0</span>
+        <span id="hour">00</span>시
+        <span id="minute">00</span>분
+        <span id="second">00</span>초
+    </h1>
+    <script>
+    function autotime(){
+        var today = new Date();
+        var year = today.getFullYear(); //today 날짜 정보 중 연도를 4자리 수로
+        var month = today.getMonth() + 1;
+        var date = today.getDate();
+        var day = today.getDay(); // 0~6 (일월화수목금토)
+        var hour = today.getHours();
+        var min = today.getMinutes();
+        var sec = today.getSeconds();
+        var yoil;
+        switch (day) {
+            case 0: yoil = '일요일';
+                break;
+            case 1: yoil = '월요일';
+                break;
+            case 2: yoil = '화요일';
+                break;
+            case 3: yoil = '수요일';
+                break;
+            case 4: yoil = '목요일';
+                break;
+            case 5: yoil = '금요일';
+                break;
+            case 6: yoil = '토요일';
+                break;
+            default: yoil = '에러';
+        }
+        //    if(day == 0){
+        //     day = "일요일";
+        // }else if(day == 1){
+        //     day = "월요일";
+        // }else if(day == 2){
+        //     day = "화요일";
+        // }else if(day == 3){
+        //     day = "수요일";
+        // }else if(day == 4){
+        //     day = "목요일";
+        // }else if(day == 5){
+        //     day = "금요일";
+        // }else if(day == 6){
+        //     day = "토요일";
+        // }
+
+        // console.log(year, month, date, yoil, hour, min, sec);
+        // document.write(year, "년 ", month, "월 ", date, "일 "
+        //     , yoil, hour, "시 ", min, "분 ", sec, "초<br>")
+
+        //  document.write(`${year}년 ${month}월 ${date}일 ${yoil} ${hour}시 ${min}분 ${sec}초`);
+        document.getElementById('year').innerHTML = year;
+        document.getElementById('month').innerHTML = month;
+        document.getElementById('date').innerHTML = date;
+        document.getElementById('yoil').innerHTML = yoil;
+        document.getElementById('hour').innerHTML = hour;
+        document.getElementById('minute').innerHTML = min;
+        document.getElementById('second').innerHTML = sec;
+        }
+        // setInterval(function(){},1000) 
+        // setInterval(함수명,1000) 
+        setInterval(autotime,1000);
+    </script>
+</body>
+
+</html>

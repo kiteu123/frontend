@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://www.google.com" id="myLink" target="_blank">구글</a>
+</body>
+</html>
+<script>
+    const link = document.getElementById("myLink");
+    console.log(link.getAttribute("href"));
+    console.log(link.getAttribute("target"));
+
+    link.setAttribute("href", "https://naver.com"); //href 변경
+    link.setAttribute("target", "_self"); // target 변경
+
+    console.log(link.getAttribute("href"));
+    console.log(link.getAttribute("target"));
+</script>
