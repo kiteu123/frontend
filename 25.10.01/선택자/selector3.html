@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="fruits">
+        <li>🍎 사과</li>
+        <li>🍌 바나나</li>
+        <li>🍇 포도</li>
+    </ul>
+</body>
+
+</html>
+<script>
+    const first = document.querySelector("#fruits li"); // 리스트 중 첫번째만
+    console.log(first.textContent); 
+    console.log(first.nextElementSibling.textContent); // first 다음 항목
+    const second = first.nextElementSibling;
+    console.log(second.nextElementSibling.textContent);
+
+    
+    console.log(second.previousElementSibling.textContent);
+
+    const list = document.getElementById('fruits');
+
+    //부모
+    console.log("부모와 자식");
+    console.log(list.parentElement.tagName);
+    console.log(list.children.length); // 3개 - 리스트 자식들의 갯수
+    console.log(list.firstElementChild.textContent);
+    console.log(list.lastElementChild.textContent);
+    </script>

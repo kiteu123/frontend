@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var x = 200;
+        function testVar(){ //함수 범위 내에 변수가 값이 똑같음 (함수 스코프)
+            if(true){
+                var x = 100;
+                console.log("블록 내부 : ", x);
+            }
+            console.log("블록 외부 : ", x);
+        }
+        // console.log("함수블록 외부 : ", x); 함수를 벗어나면 x 인식 불가
+        console.log("함수블록 외부 : ", x);
+        testVar();
+    </script>
+</body>
+</html>

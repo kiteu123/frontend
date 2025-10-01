@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //숫자로 변환 Number() or parseInt() 사용
+        var sum = 0;
+        var avg = 0;
+        var kor = Number(prompt("당신의 국어 점수는 ?",""));
+        var mat = Number(prompt("당신의 수학 점수는 ?",""));
+        var eng = parseInt(prompt("당신의 영어 점수는 ?",""));
+
+        sum = kor + mat + eng;
+        avg = sum/3
+        document.write("합계 점수는 ",sum,"<br>");
+        document.write("평균 점수는 ",avg);
+    </script>
+</body>
+</html>
