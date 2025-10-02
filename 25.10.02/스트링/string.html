@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var str = "Javascript";
+        console.log(str.charAt(5));
+
+        var str = "Javascript";
+        console.log(str.indexOf('a'));
+        //a가 포함되어 있는지 확인 / 포함될 때 제일 첫번째 a의 인덱스 번호
+        console.log(str.indexOf('k')); //포함되지 않으면 -1
+
+        console.log(str.lastIndexOf('a')); // 맨 뒤부터 a가 포함되어 있는지 확인
+
+        console.log(str.includes('a'));
+
+        var str = 'http://icoxpublish.com';
+        console.log(str.substring(0, 4));
+        //인덱스 번호 0부터 4이전 , 즉 [0] ~ [3] 추출
+        console.log(str.substring(7));
+        //7번자리부터 끝까지
+
+        var str = 'http://icoxpublish.com';
+        console.log(str.substr(7, 4));
+        // 인덱스 번호 7번부터 4글자, [7]~[10]
+
+        var str = 'Javascript_jQuery';
+        var division = str.split('_');
+        // _ 기준으로 잘라서 배열
+        console.log(division[0]+ ","+division[1]);
+        console.log(division);
+
+        var str = 'm_out_.gif';
+        console.log(str.replace('out', 'over'));
+
+        var str1 = 'nav';
+        var str2 = '_bg';
+        console.log(str1.concat(str2));
+
+           var str = " removeblank ";
+        console.log(str.trim());
+        //공백제거
+
+        var str = "LoWerCase";
+        console.log(str.toLowerCase());
+        var str = "UppErCase";
+        console.log(str.toUpperCase());
+        //내일 시험 치를 예정
+    </script>
+</body>
+
+</html>
