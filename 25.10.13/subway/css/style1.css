@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    width: 100%;
+    height: 2px;
+    background-color: green;
+}
+
+.logo {
+    width: 202px;
+    height: 40px;
+
+}
+
+nav>img {
+    height: 120px;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+nav {
+    width: 2000px;
+    height: 50px;
+    background-color: white;
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+nav .gnb {
+    width: 2000px;
+    height: 50px;
+    background-color: white;
+    position: absolute;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+nav .gnb:hover {
+    height: 350px;
+}
+
+.dp1:hover {
+    color: green;
+}
+
+.dp2 li:hover a {
+    color: green;
+    text-decoration: underline;
+}
+
+.gnb>li {
+    display: inline-block;
+    vertical-align: top;
+
+
+}
+
+.gnb>li>a {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.gnb li a {
+    display: block;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.gnb>li:hover::after {
+    content: '';
+    display: block;
+    width: 100%;
+    /* #wrap과 동일하게 */
+    height: 1px;
+    background-color: #ccc;
+    position: absolute;
+    top: 50px;
+    /* nav의 높이만큼 아래 = #wrap 윗부분 */
+    left: 0;
+    z-index: 5;
+}
+
+body {
+    font-size: 12px;
+    font-family: Dotum;
+    color: #74767a;
+    line-height: 120%;
+}
+
+a {
+    color: #74767a;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+#wrap {
+    
+    position: relative;
+    margin-top: 40px;
+    height: 500px;
+    z-index: 0;
+}
+
+#brandVisual {
+    position: relative;
+    width: 100%;
+    min-width: 1000px;
+    height: 440px;
+    background-color: #8c908c;
+    /* overflow: hidden;  */
+}
+
+#brandVisual ul li {
+    position: absolute;
+    width: 100%;
+    height: 500px;
+}
+
+#brandVisual .visual_0 {
+    left: 0;
+    background: url(../img/s1.jpg) 50% 0 no-repeat;
+}
+
+#brandVisual .visual_1 {
+    left: 100%;
+    background: url(../img/s2.jpg) 50% 0 no-repeat;
+}
+
+#brandVisual .visual_2 {
+    left: 200%;
+    background: url(../img/s3.jpg) 50% 0 no-repeat;
+}
+
+#brandVisual .visual_3 {
+    left: 300%;
+    background: url(../img/s4.jpg) 50% 0 no-repeat;
+}
+
+#brandVisual .visual_4 {
+    left: 400%;
+    background: url(../img/s5.jpg) 50% 0 no-repeat;
+}
+
+#buttonList {
+    position: absolute;
+    bottom: 100px;
+    left: 60%;
+    margin-left: 300px;
+}
+
+#buttonList li {
+    width: 15px;
+    height: 15px;
+    float: left;
+    border-radius: 7.5px;
+    margin: 0 5px;
+    background-color: #ddd;
+}
+
+#buttonList li.on {
+    width: 30px;
+    background-color: gold;
+}
+
+#buttonList li a {
+    display: block;
+    text-indent: -9999px;
+}
+
+.dp2 {
+    font-size: 16px;
+}
+
+#wrap1 {
+    position: relative;
+    gap: 10px;
+
+}
+
+#store,
+#ask {
+    
+    width: 300px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    position: absolute;
+}
+
+#store {
+    right: 600px;
+    top: -30px;
+    background-color: gold;
+    color: black;
+    border-radius: 20px 0px 0px 0px;
+    background: url(../img/icon_map.png) no-repeat 70px center gold;
+}   
+
+#ask {
+    right: 300px;
+    top:-30px;
+    background-color: green;
+    color: white;
+    border-radius: 0px 0px 20px 0px;
+     background: url(../img/icon_franchise.png) no-repeat 40px center green;
+}
