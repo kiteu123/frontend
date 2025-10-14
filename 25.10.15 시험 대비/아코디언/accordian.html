@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .acc{
+            width: 800px;
+            margin: 50px auto;
+        }
+        .a li h2{
+            text-indent: 50px;
+            background: url(img/a1.jpg);
+        }
+        /* ul li{
+            padding: 10px;
+        } */
+
+        .a li h2.on{ /* 호버 */
+            background: url(img/a2.jpg);
+        }
+        
+        .a li h2.selected{ /* 누름 */
+            background: url(img/a3.jpg);
+        }
+
+        ul li p{
+            display: none;
+            padding: 20px;
+            text-indent: 50px;
+            background-color: rgb(37, 7, 7);
+        }
+
+        ul li p.slide{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="acc">
+        <ul class="a">
+            <li>
+                <h2> Step.1</h2>
+                <p>Integer pretium porttitor lectus at tempor. Donec nec cursus elit. Maecenas ornare malesuada urna
+                    vitae
+                    lobortis. Sed vulputate sapien quis purus cursus consectetur. Aenean nulla neque, egestas ut
+                    accumsan
+                    nec, convallis vel enim. Vestibulum vehicula interdum diam nec condimentum. Etiam in condimentum
+                    justo.
+                    Fusce a tortor metus, id pellentesque orci. Sed facilisis, tellus quis tempus faucibus, justo elit
+                    sodales lorem, eget placerat lectus risus bibendum ipsum. Donec varius mattis quam eu consequat.
+                    Praesent ut metus nec nibh tincidunt suscipit. Nam vulputate sodales egestas. Sed orci lectus,
+                    vestibulum ac gravida eget, congue non velit. Morbi rutrum convallis orci, in hendrerit arcu
+                    vulputate
+                    a. Aliquam aliquam facilisis libero, sit amet facilisis lacus tincidunt ac. Sed viverra nulla sit
+                    amet
+                    turpis egestas nec molestie justo congue. Vivamus a lacinia sem. Aenean ut metus arcu, non ornare
+                    orci.
+                    Praesent feugiat est eu tellus dictum ac imperdiet nisi imperdiet. </p>
+            </li>
+            <li>
+                <h2>Step.2</h2>
+                <p>Integer pretium porttitor lectus at tempor. Donec nec cursus elit. Maecenas ornare malesuada urna
+                    vitae
+                    lobortis. Sed vulputate sapien quis purus cursus consectetur. Aenean nulla neque, egestas ut
+                    accumsan
+                    nec, convallis vel enim. Vestibulum vehicula interdum diam nec condimentum. Etiam in condimentum
+                    justo.
+                    Fusce a tortor metus, id pellentesque orci. Sed facilisis, tellus quis tempus faucibus, justo elit
+                    sodales lorem, eget placerat lectus risus bibendum ipsum. Donec varius mattis quam eu consequat.
+                    Praesent ut metus nec nibh tincidunt suscipit. Nam vulputate sodales egestas. Sed orci lectus,
+                    vestibulum ac gravida eget, congue non velit. Morbi rutrum convallis orci, in hendrerit arcu
+                    vulputate
+                    a. Aliquam aliquam facilisis libero, sit amet facilisis lacus tincidunt ac. Sed viverra nulla sit
+                    amet
+                    turpis egestas nec molestie justo congue. Vivamus a lacinia sem. Aenean ut metus arcu, non ornare
+                    orci.
+                    Praesent feugiat est eu tellus dictum ac imperdiet nisi imperdiet. </p>
+            </li>
+            <li>
+                <h2>Step.3</h2>
+                <p>Integer pretium porttitor lectus at tempor. Donec nec cursus elit. Maecenas ornare malesuada urna
+                    vitae
+                    lobortis. Sed vulputate sapien quis purus cursus consectetur. Aenean nulla neque, egestas ut
+                    accumsan
+                    nec, convallis vel enim. Vestibulum vehicula interdum diam nec condimentum. Etiam in condimentum
+                    justo.
+                    Fusce a tortor metus, id pellentesque orci. Sed facilisis, tellus quis tempus faucibus, justo elit
+                    sodales lorem, eget placerat lectus risus bibendum ipsum. Donec varius mattis quam eu consequat.
+                    Praesent ut metus nec nibh tincidunt suscipit. Nam vulputate sodales egestas. Sed orci lectus,
+                    vestibulum ac gravida eget, congue non velit. Morbi rutrum convallis orci, in hendrerit arcu
+                    vulputate
+                    a. Aliquam aliquam facilisis libero, sit amet facilisis lacus tincidunt ac. Sed viverra nulla sit
+                    amet
+                    turpis egestas nec molestie justo congue. Vivamus a lacinia sem. Aenean ut metus arcu, non ornare
+                    orci.
+                    Praesent feugiat est eu tellus dictum ac imperdiet nisi imperdiet. </p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    $(function(){
+        $('h2').hover(function(){
+            $(this).addClass('on');
+        });
+        $('h2').mouseout(function(){
+            $(this).removeClass('on');
+        });
+
+        $('h2').click(function(){
+            $('h2').removeClass('selected');
+
+            var status = $(this).next('p').css('display');
+            
+            if(status === 'none'){
+                $('p').slideUp();
+                $(this).next('p').slideDown();
+                $(this).addClass('selected');
+            }else{
+                $('p').slideUp();
+            }
+
+            
+
+        })
+    });
+</script>

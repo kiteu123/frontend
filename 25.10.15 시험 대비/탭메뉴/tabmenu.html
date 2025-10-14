@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .tab {
+            width: 1000px;
+            height: 500px;
+            /* background-color: grey;  */
+            margin: 50px auto;
+        }
+        .tab_menu{
+            display: flex;
+            color: gold;
+        }
+        .tab_menu li{
+            background-color: blueviolet;
+            width: 150px;
+            height: 50px;
+            line-height: 50px;
+            margin: 2px;
+            text-align: center;
+            box-sizing: border-box;
+            border: 1px dashed black;
+        }
+        .tab_list{
+            /* display: none; */
+            margin: 10px 0 0 0;
+            
+        }
+        .tab_list li{
+            border: 1px solid yellow;
+            display: none;
+            padding: 15px;
+            width: 500px;
+        }
+
+        .tab_menu li.on{
+            color: white;
+            background-color: brown;
+        }
+
+        .tab_list li.on{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <ul class="tab_menu">
+            <li class="on">MENU1</li>
+            <li>MENU2</li>
+            <li>MENU3</li>
+        </ul>
+        <ul class="tab_list">
+            <li class="on">
+                <h2>menu1</h2>
+                <p>02.Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, eius eum iste est placeat qui
+                    deleniti sed doloribus, eaque necessitatibus molestias nihil accusantium dolores aut vitae!
+                    Doloremque consectetur eius modi!</p>
+            </li>
+            <li>
+                <h2>menu2</h2>
+                <p>02.Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, eius eum iste est placeat qui
+                    deleniti sed doloribus, eaque necessitatibus molestias nihil accusantium dolores aut vitae!
+                    Doloremque consectetur eius modi!</p>
+            </li>
+            <li>
+                <h2>menu3</h2>
+                <p>02.Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, eius eum iste est placeat qui
+                    deleniti sed doloribus, eaque necessitatibus molestias nihil accusantium dolores aut vitae!
+                    Doloremque consectetur eius modi!</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    $(function(){
+        $('.tab_menu li').click(function(){
+            var i = $(this).index();
+            // alert(i); 
+            $('.tab_menu li').removeClass('on');
+            $('.tab_menu li').eq(i).addClass('on');
+
+            $('.tab_list li').removeClass('on');
+            $('.tab_list li').eq(i).addClass('on');
+        })
+    })
+</script>
