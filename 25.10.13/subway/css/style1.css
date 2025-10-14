@@ -44,7 +44,7 @@ nav .gnb {
     height: 50px;
     background-color: white;
     position: absolute;
-    overflow: hidden;
+    overflow: hidden; 
     transition: all 0.2s;
 }
 
@@ -62,7 +62,7 @@ nav .gnb:hover {
 }
 
 .gnb>li {
-    display: inline-block;
+    display: inline-block; 
     vertical-align: top;
 
 
@@ -96,8 +96,8 @@ nav .gnb:hover {
 
 body {
     font-size: 12px;
-    font-family: Dotum;
-    color: #74767a;
+    /* font-family: Dotum;  */
+    color: #74767a; 
     line-height: 120%;
 }
 
