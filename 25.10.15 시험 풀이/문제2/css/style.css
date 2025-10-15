@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+    list-style: none;
+}
+.tab{
+    margin: 50px auto;
+    width: 500px;
+    /* background-color: aqua;  */
+}
+.tab_menu{
+    display: flex;
+
+}
+.tab_menu li{
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: 1px solid black;
+    margin: 5px;
+}
+.tab_menu .on{
+    background-color: black;
+    color: white;
+}
+
+.tab_list li{
+    border: 1px solid black;
+    padding: 30px;
+    display: none;
+}
+.tab_list .on{
+    display: block;
+}
+.tab_list li p{
+    text-indent: 30px;
+}
+

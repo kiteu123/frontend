@@ -1,0 +1,38 @@
+ * {
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .acc{
+            width: 800px;
+            margin: 50px auto;
+        }
+        .a li h2{
+            text-indent: 50px;
+            background: url(../img/a1.jpg);
+        }
+        /* ul li{
+            padding: 10px;
+        } */
+
+        .a li h2.on{ /* 호버 */
+            background: url(../img/a2.jpg);
+        }
+        
+        .a li h2.selected{ /* 누름 */
+            background: url(../img/a3.jpg);
+        }
+
+        ul li p{
+            display: none;
+            padding: 20px;
+            text-indent: 50px;
+            background-color: rgb(37, 7, 7);
+            color: white;
+        }
+
+        ul li p.slide{
+            display: block;
+        }

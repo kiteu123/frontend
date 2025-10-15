@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.acc{
+    margin : 50px auto;
+    width: 500px;
+}
+
+.a li h2{
+    background: url(../img/a1.jpg) no-repeat;
+    text-indent: 20px;
+    color: white;
+}
+.a li p{
+    background-color: bisque;
+    text-indent: 20px;
+    
+    display: none;  
+}
+.a li h2.on{
+    background: url(../img/a2.jpg) no-repeat;
+}
+
+.a li h2.selected{
+    background: url(../img/a3.jpg) no-repeat;
+}
+
+.a li p .on{
+    display: block;
+}

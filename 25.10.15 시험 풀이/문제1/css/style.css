@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.header{
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+.topline{
+    width: 100%;
+    height: 2px;
+    background-color: green;
+}
+.sublogo{
+    position: absolute;
+    width: 202px;
+    height: 40px;
+    background: url(../img/logo_w.png) no-repeat;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bar{
+    width: 100%;
+    height: 50px;
+    position: relative;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(196, 194, 194);
+}
+
+.tab{
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    
+}
+.tab > li > a{
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+}
+
+
+
+.menu_list{
+   width: 200px;
+   height: 0px;
+   overflow: hidden; 
+   position: absolute;
+   z-index: 99;
+   transition: height 0.3s ease;
+}
+
+.tab:hover .menu_list{
+    height: 350px;
+}
+
+.tab>li>a:hover{
+    color: green;
+}
+
+.menu_list li a:hover{
+    color: green;
+    text-decoration: underline;
+}
+
+.menu_list li a{
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    display: inline-block;
+}
+
+.shadow{
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    height: 0px;
+    overflow: hidden;
+    background-color: white;
+    z-index: -98;
+    transition: height 0.3s ease;
+}
+.tab:hover + .shadow{
+    height: 350px;
+    border-bottom: 1px solid grey;
+}
+
+.slide{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 500px;
+    z-index: -99;
+    
+    /* background-color: grey;  */
+}
+
+.slide ul li{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.slide_banner1{
+    background: url(../img/s1.jpg) no-repeat 50% 0;
+}
+.slide_banner2{
+    background: url(../img/s2.jpg) no-repeat 50% 0;
+}
+.slide_banner3{
+    background: url(../img/s3.jpg) no-repeat 50% 0;
+}
+.slide_banner4{
+    background: url(../img/s4.jpg) no-repeat 50% 0;
+}
+.slide_banner5{
+    background: url(../img/s5.jpg) no-repeat 50% 0;
+}
+
+.slidebutton{
+    margin: 0 auto;
+    width: 1920px;
+    height: 50px;
+    position: relative;
+    background-color: white;
+    display: flex;
+}
+
+.slidebutton ul li{
+    position: absolute;
+    bottom: 200px;
+    width: 15px;
+    height: 15px;
+    border-radius: 7.5px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slidebutton1{
+    right: 210px;
+}
+.slidebutton2{
+    right: 180px;
+}
+.slidebutton3{
+    right: 150px;
+}
+.slidebutton4{
+    right: 120px;
+}
+.slidebutton5{
+    right: 90px;
+}
+
+.slidebutton ul li.on{
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+    width: 30px;
+    background-color: gold;
+}
+
+#wrap1{
+    position: absolute;
+    display: flex;
+    bottom: 50px;
+    right: 100px;
+}
+#wrap1 h2{
+    width: 300px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    cursor: pointer;
+    /* border: 1px solid black;  */
+}
+#wrap1>h2:nth-child(1){
+    background: gold url(../img/icon_map.png) no-repeat 25% 50%;
+    border-top-left-radius: 50px;
+    
+}
+#wrap1>h2:nth-child(2){
+    color: white;
+    background: green url(../img/icon_franchise.png) no-repeat 15% 50%;
+    border-bottom-right-radius: 50px;
+}

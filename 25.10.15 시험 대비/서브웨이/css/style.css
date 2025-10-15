@@ -1,0 +1,211 @@
+  * {
+      margin: 0;
+      padding: 0;
+  }
+
+  ul,
+  li {
+      list-style: none;
+  }
+
+  a {
+      text-decoration: none;
+      color: black;
+  }
+
+  .header {
+      width: 100%;
+      height: 100px;
+      /* background-color: grey;  */
+      position: relative;
+  }
+
+  .topline {
+      width: 100%;
+      height: 2px;
+      background-color: greenyellow;
+  }
+
+  .sublogo {
+      position: absolute;
+      width: 202px;
+      height: 40px;
+      background: url(../img/logo_w.png) no-repeat 0 0;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+  }
+
+  .bar {
+      position: relative;
+      width: 100%;
+      height: 50px;
+      /* background-color: aquamarine;  */
+      box-sizing: border-box;
+      border-bottom: 1px solid grey;
+  }
+
+  .tab {
+      display: flex; 
+      justify-content: center;
+  }
+
+  .tab>li {
+      width: 200px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      /* background-color: black;  */
+
+
+  }
+
+  .menu_list {
+      width: 200px;
+      height: 0px;
+      overflow: hidden;
+      position: absolute;
+      z-index: 10;
+      /* background-color: blue;  */
+      transition: height 0.5s ease;
+
+  }
+
+  .tab>li:hover>a {
+      color: green;
+  }
+
+  .tab:hover .menu_list {
+      height: 350px;
+  }
+
+  .menu_list>li:hover>a {
+      text-decoration: underline;
+      color: green;
+  }
+
+  .shadow {
+      width: 100%;
+      height: 0px;
+      position: absolute;
+      z-index: 9;
+      background-color: white;
+
+      transition: height 0.5s ease;
+  }
+
+  .tab:hover+.shadow {
+      border-bottom: 1px solid grey;
+      height: 350px;
+  }
+
+  .slide {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 500px;
+      /* background-color: aqua;  */
+  }
+
+  .slide ul li {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+  }
+
+  .slide_banner1 {
+      background: url(../img/s1.jpg) no-repeat 50% 0;
+  }
+
+  .slide_banner2 {
+      background: url(../img/s2.jpg) no-repeat 50% 0;
+  }
+
+  .slide_banner3 {
+      background: url(../img/s3.jpg) no-repeat 50% 0;
+  }
+
+  .slide_banner4 {
+      background: url(../img/s4.jpg) no-repeat 50% 0;
+  }
+
+  .slide_banner5 {
+      background: url(../img/s5.jpg) no-repeat 50% 0;
+  }
+
+
+  .slidebutton {
+      margin: 0 auto;
+      position: relative;
+      height: 50px;
+      width: 1920px;
+      display: flex;
+
+      /* background-color: grey;  */
+  }
+
+  .slidebutton ul li {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      bottom: 150px;
+      border-radius: 7.5px;
+      background-color: #ddd;
+      transition: all 0.3s ease;
+  }
+
+  .slidebutton ul li:nth-child(1) {
+      right: 170px;
+  }
+
+  .slidebutton ul li:nth-child(2) {
+      right: 140px;
+  }
+
+  .slidebutton ul li:nth-child(3) {
+      right: 110px;
+  }
+
+  .slidebutton ul li:nth-child(4) {
+      right: 80px;
+  }
+
+  .slidebutton ul li:nth-child(5) {
+      right: 50px;
+  }
+
+  .slidebutton ul li.on {
+      margin-left: -7.5px;
+      margin-right: -7.5px;
+      width: 30px;
+      background-color: gold;
+  }
+
+  #wrap1 {
+      position: absolute;
+      bottom: 50px;
+      right: 100px;
+      display: flex;
+  }
+
+  #wrap1>h2 {
+      width: 300px;
+      height: 80px;
+      line-height: 80px;
+      text-align: center;
+
+      z-index: 11;
+  }
+
+  #wrap1>h2:nth-child(1) {
+      border-top-left-radius: 30px;
+      background: url(../img/icon_map.png) no-repeat 20% center;
+      background-color: gold;
+  }
+
+  #wrap1>h2:nth-child(2) {
+      border-bottom-right-radius: 30px;
+      background: url(../img/icon_franchise.png) no-repeat 15% center;
+      background-color: green;
+      color: white;
+  }
