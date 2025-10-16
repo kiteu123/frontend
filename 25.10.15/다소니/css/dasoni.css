@@ -631,23 +631,141 @@ header .gnb {
     }
 }
 
-.leftslide1{
+.leftslide1 {
     width: 500px;
     height: 255px;
-    margin-left: 50px;
+    margin-top: 30px;
+
 }
 
 .leftslide1 img {
     float: right;
 }
 
+.leftslide1 h2 {
+    color: green;
+    background: url(../img/sec5_tit.png) no-repeat 0 0 / contain;
+}
 
+.rightslide1 {
+    width: 500px;
+    height: 255px;
+    margin-left: 30px;
+    margin-top: 30px;
+
+}
+
+.rightslide1 img {
+    float: right;
+}
+
+.rightslide1 h2 {
+    color: orange;
+    background: url(../img/sec5_tit2.png) no-repeat 0 0 / contain;
+}
+
+#s6 {
+    width: 1000px;
+    height: 400px;
+    display: flex;
+    margin: 0 auto;
+}
+
+#s6 ul {
+    width: 500px;
+}
 
 #s6 ul li {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
+}
+
+#s6 ul li:hover .s6title {
+    text-decoration: underline;
+}
+
+.leftslide1,
+.rightslide1 {
+    visibility: hidden;
+}
+
+.leftslide1.xslide,
+.rightslide1.xslide {
+    visibility: visible;
+    animation: xslide 1s;
+}
+
+@keyframes xslide {
+    0% {
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.cf img {
+    transition: transform 0.5s;
+}
+
+.cf:hover img{
+    transform: rotate(180deg);
+}
+footer{
+    position: relative;
+    height: 300px;
+    background-color:rgb(51, 51, 51)
+}
+
+.ft_container{
+    justify-content: center;
+    display: flex;
+}
+
+.ft_left,
+.ft_center,
+.ft_right{
+    margin-top: 50px;
+}
+
+.ft_left{
+    
+    width: 300px;
+    height: 200px;
+    background:  url(../img/f_logo.png) no-repeat;
+}
+
+.ft_center{
+    width: 700px;
+    
+}
+.ft_center p{
+    color: white;
+}
+
+.ft_right{
+    width: 300px;
+    
+    
+}
+.sns_1{
+    display: inline-block;
+    margin-top: 50px;
+    margin-right: 20px;
+    background-image: no-repeat;
+}
+.sns_2{
+    background-image: no-repeat;
+    margin-right: 20px;
+}
+
+.sns_3{
+    background-image: no-repeat;
 }
 

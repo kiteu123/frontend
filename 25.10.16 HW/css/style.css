@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow-x:scroll;
+}
+nav {
+    position: absolute;
+    top: 0;
+    height: 100px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 10;
+    transition: all 0.5s;
+}
+
+nav.fixed {
+    position: fixed;
+    background: rgba(255, 255, 255, 1);
+}
+
+nav ul {
+    width: 1000px;
+    height: 100px;
+    margin: 0 auto;
+    list-style: none;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 32px;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav ul li.on a {
+    color: orange;
+    font-weight: bold;
+}
+
+.container {
+    width: 500vw;
+    overflow-x: auto;
+    height: 100vh;
+    display: flex;
+}
+
+.section {
+    
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.section1 {
+    
+    background-color: brown;
+}
+
+.section2 {
+   
+    background-color: burlywood;
+}
+
+.section3 {
+    background-color: whitesmoke;
+}
+
+.section5 {
+    background-color: blue;
+}
+
+.section5 {
+    background-color: black;
+}
+
+.s_Top {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 100;
+}

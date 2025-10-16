@@ -1,0 +1,30 @@
+1. 구글에서 카카오 api검색
+-로그인 
+-내애프리케이션
+
+새창에서  -카카오 지도 - kakao Maps API
+
+
+2. 오른쪽 상단에 app key발급
+3. javascript키 복사 
+  bceccd594bb478b5533d7d2ec63f8bb0
+
+my api key - 6f92e2869b88f2373826e1ec15e5061c
+
+ 4. https://apis.map.kakao.com/web/guide/
+ html 복사해온다.
+
+ 5. <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=bceccd594bb478b5533d7d2ec63f8bb0"></script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 넣으시면 됩니다."></script>
+ 스크립트를 키값을 넣어서 수정  
+ 5-1. 실행시키면 카카오 본사
+ 6. 본인의 집으로 위경도 알아오기
+ 7. 구글에서 구글맵을 검색
+   -신안 메트로칸  상단주소에 위경도 나옴
+   @뒤에 37.4312802,127.0583652 복사
+
+   또는 
+
+   목적지 표시에서 손가락 나오면 오른쪽 버튼 
+   이곳이 궁금한가요 - 클릭 - 위경도 복사

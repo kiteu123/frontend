@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+
+<body>
+    <h1 id="text">타이밍 효과 시험을 연습해보세요! 타닥 타닥 타닥</h1>
+</body>
+
+</html>
+<script>
+    $(function () {
+        let count = 0;
+        let text1 = $("#text");
+        let msg; // 내용
+        let comp; // 글자길이
+        let kkk;
+        function main() {
+            msg = text1.text(); // 내용을 smg에 저장
+            // alert(msg); 
+            comp = msg.length; // 내용의 길이
+            tatata();
+        }
+
+        function tatata() {
+            if (count <= comp) {
+                kkk = msg.substring(0, count);
+                // 인덱스 0부터 시작해 count 직전 인덱스까지
+                // 총 count 길이만큼 잘라낸 새로운 문자를 생성 
+                text1.text(kkk); // 잘라낸 문자를 text1에 반영
+                count++;
+                setTimeout(tatata,100); // 재귀함수
+            }else{
+                count = 0;
+                main();
+            }
+        }
+
+        main();
+    });
+</script>

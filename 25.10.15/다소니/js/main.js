@@ -150,5 +150,13 @@ $(function () {
             $('.s5_title').addClass('xslide');
         }
     });
+     $(window).scroll(function () {
+       var sct = $(this).scrollTop();
+       
+        if (d1 <= sct + 900) {
+            $('.leftslide1').addClass('xslide');
+            $('.rightslide1').addClass('xslide');
+        }
+    });
 
 });
