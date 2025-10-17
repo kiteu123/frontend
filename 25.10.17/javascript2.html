@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>버튼 클릭 시 count 증가</h1>
+    <div id="count">0</div>
+    <button id="btn">+ 1 증가</button>
+    <button id="btn_minus">- 1 증가</button>
+    <script>
+        
+        let count = 0;
+
+        const countDisplay = document.getElementById("count");
+        const btn = document.getElementById("btn");
+        const btn_m = document.getElementById("btn_minus");
+        
+        btn.addEventListener("click", () => {
+            count++;
+            countDisplay.textContent = count;
+        })
+        btn_m.addEventListener("click", () => {
+            count--;
+            countDisplay.textContent = count;
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        // 여러 데이터를 하나로 묶어 관리할 수 있는 자료형
+        const person = {
+            name : "홍길동",
+            age : 25,
+            job : "개발자",
+            sayHello : function(){
+                console.log("안녕하세요, 저는 " + this.name +"입니다.");
+            }
+        }   
+        
+        console.log(person.name);
+        console.log(person.age);
+        console.log(person[age]);
+        person.sayHello();
+    </script>
+</body>
+</html>

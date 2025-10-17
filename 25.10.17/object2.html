@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        // 여러 데이터를 하나로 묶어 관리할 수 있는 자료형
+        const user = {
+            name : "이몽룡",
+            age:20
+        };
+        user.name = "이몽룡";
+        console.log(user.name);
+
+        user.job="학생";
+        user["hobby"] = "독서";
+        console.log(user);
+
+        user.age = 21;
+
+        delete user.hobby;
+
+        console.log(user);
+    </script>
+</body>
+</html>
