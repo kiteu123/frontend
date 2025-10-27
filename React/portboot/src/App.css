@@ -24,15 +24,15 @@ html {
   color: #f4511e !important;
 }
 .header {
-  background-color: #f4511e;
+  background-color: #f4511e !important;
   color: #fff;
 }
 .graph {
   color: #f4511e !important;
-  font-size: 160px;
+  font-size: 160px !important;
 }
 .logo-small {
-  font-size: 60px;
+  font-size: 60px !important;
   color: #f4511e !important;
 }
 .slideanim {

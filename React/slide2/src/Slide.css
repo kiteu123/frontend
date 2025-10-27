@@ -1,4 +1,4 @@
-.slide-area {
+.slide-area{
   position: relative;
   width: 400px;
   height: 400px;
@@ -12,20 +12,17 @@
   opacity: 0;
   transition: opacity 0.5s ease;
 }
-
+.slide.active{
+    opacity: 1;
+    z-index: 1;
+}
 .slide-text {
   position: absolute;
   bottom: 30px;
   left: 20px;
   color: white;
-  text-shadow: 1p 1px 5px rgba(0, 0, 0, 0.7);
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
 }
-
-.slide.active {
-  opacity: 1;
-  z-index: 1;
-}
-
 .pager {
   position: absolute;
   bottom: 10px;
@@ -45,17 +42,15 @@
   border: none;
   cursor: pointer;
 }
-
-.pager-dot.active {
-  opacity: 1;
-  background: #ff4500;
+.pager-dot.active{
+    opacity: 1;
+    background: #ff4500;
 }
-
 .stop-btn {
   margin-left: 10px;
   padding: 2px 5px;
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0,0,0,0.5);
   color: #fff;
   border: none;
   border-radius: 3px;
