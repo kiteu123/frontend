@@ -43,9 +43,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="navbar-nav ms-auto">
-            <!-- m margin s-start 오른쪽정렬 
-    블럭요소 중앙 정렬 가려면  w-50 50%넓이 mx-auto  중앙정렬
-    flexbox  d-flex(display:flex) justify-content-center 가로 중앙정렬 align-item-center  -->
             <a class="nav-link" aria-current="page" href="#about">Link One</a>
 
             <a class="nav-link" href="#services">Link Two</a>
@@ -179,7 +176,6 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <!-- 각 카드 하나씩 swiper-slide로 -->
           <div class="swiper-slide">
             <div class="card" style="width: 25rem; height: 350px; border: none">
               <img
@@ -676,17 +672,13 @@
     level: 3,
   };
 
-  // 지도 생성
   var map = new kakao.maps.Map(container, options);
 
-  // 마커 위치
   var markerPosition = new kakao.maps.LatLng(37.485997, 126.897464);
 
-  // 마커 생성
   var marker = new kakao.maps.Marker({
     position: markerPosition,
   });
 
-  // 마커 지도 위에 표시
   marker.setMap(map);
 </script>
