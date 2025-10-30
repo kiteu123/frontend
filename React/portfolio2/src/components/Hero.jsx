@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./hero.css";
 import { FiDownload, FiChevronDown } from "react-icons/fi";
+
 // https://react-icons.github.io/react-icons/
 export default function Hero() {
   const [offsetY, setOffsetY] = useState(0);
