@@ -170,7 +170,7 @@ export default function Contact() {
 
       {/* Footer */}
       <footer className="footer">
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>&copy; 2024 KYW. All rights reserved.</p>
       </footer>
     </section>
   );
