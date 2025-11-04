@@ -17,12 +17,12 @@ img {
 }
 
 /* header */
-/* 중앙정렬 1019 */
 .header {
   margin: 0 auto;
   width: 1019px;
   height: 100px;
 }
+
 .header .social {
   position: relative;
   float: left;
@@ -42,6 +42,7 @@ img {
 .header .social li:first-child a {
   margin-left: 0;
 }
+
 .header .social .mileage_btn {
   margin-left: 108px;
   width: 88px;
@@ -52,85 +53,6 @@ img {
   margin: 10px 0 0 236px;
   width: 155px;
   height: 78px;
-}
-
-.mobile_tab {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 120;
-  margin-right: 20px;
-  margin-top: 15px;
-  width: 28px;
-}
-.mobile_tab a {
-  display: block;
-  width: 28px;
-}
-
-.mobile_nav {
-  /* display: none; */
-  position: fixed;
-  right: -220px;
-  top: 0;
-  z-index: 150;
-  padding: 40px 24px;
-  width: 220px;
-  height: 100%;
-  background: #fff;
-  box-sizing: border-box;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-  transition: right 0.4s ease-out;
-}
-.mobile_nav.active {
-  right: 0;
-}
-
-.mobile_nav > ul > li > a {
-  display: block;
-  padding: 0 10px;
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  color: #2f2f2f;
-  border-bottom: 1px dotted #ccc;
-  box-sizing: border-box;
-}
-.mobile_nav > ul > li:hover > a {
-  color: #b4252d;
-}
-.mobile_nav .sub {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-.mobile_nav .sub.active {
-  max-height: 500px;
-}
-
-.mobile_nav .sub > li {
-  height: 35px;
-  border-top: 1px dotted #eaeaea;
-}
-.mobile_nav .sub > li:first-child {
-  border-top: none;
-}
-.mobile_nav .sub li a {
-  display: block;
-  padding: 0 10px;
-  width: 100%;
-  line-height: 35px;
-  text-decoration: none;
-  font-size: 13px;
-  color: #2f2f2f;
-  background: #f4f4f4;
-  border-bottom: 1px dotted #eaeaea;
-  box-sizing: border-box;
-  transition: background 0.3s;
 }
 
 .header .signature img {
@@ -163,7 +85,6 @@ img {
   padding-right: 0;
 }
 
-/* nav */
 .nav {
   position: relative;
 }
@@ -175,10 +96,11 @@ img {
   height: 54px;
   overflow: hidden;
   transition: height 0.3s;
-  background: url(../images/bg_gnb.gif) repeat-x 0 0;
   text-align: center;
+  background: url(../images/bg_gnb.gif) repeat-x 0 0;
 }
-.nav > ul.over {
+
+.nav > ul:hover {
   height: 185px;
 }
 
@@ -188,6 +110,7 @@ img {
   position: relative;
   margin-left: 61px;
 }
+
 .nav > ul > li > a {
   display: block;
   padding: 0 30px;
@@ -226,14 +149,91 @@ img {
 .nav .sub a:hover {
   text-decoration: underline;
 }
-/* hero */
+
+.mobile_tab {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 120;
+  margin-right: 20px;
+  margin-top: 15px;
+  width: 28px;
+}
+
+.mobile_tab a {
+  display: block;
+  width: 28px;
+}
+
+.mobile_nav {
+  /* display: none;  */
+  position: fixed;
+  right: -220px;
+  z-index: 150;
+  padding: 40px 24px;
+  width: 220px;
+  height: 100%;
+  background: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  transition: right 0.4s ease-out;
+  top: 0;
+}
+
+.mobile_nav.active {
+  right: 0;
+}
+
+.mobile_nav > ul > li > a {
+  display: block;
+  padding: 0 10px;
+  width: 100%;
+  height: 50px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2f2f2f;
+  border-bottom: 1px dotted #ccc;
+  box-sizing: border-box;
+}
+.mobile_nav > ul > li:hover > a {
+  color: #b4252d;
+}
+.mobile_nav .sub > li {
+  height: 35px;
+  border-top: 1px dotted #eaeaea;
+}
+.mobile_nav .sub > li:first-child {
+  border-top: none;
+}
+
+.mobile_nav .sub li a {
+  display: block;
+  padding: 0 10px;
+  width: 100%;
+  line-height: 35px;
+  text-decoration: none;
+  font-size: 13px;
+  color: #2f2f2f;
+  background: #f4f4f4;
+  border-bottom: 1px dotted #eaeaea;
+  box-sizing: border-box;
+  transition: background 0.3s;
+}
+
+.mobile_nav .sub {
+  display: none;
+}
+
 .hero {
   margin-top: 54px;
 }
+
 .hero img {
   width: 100%;
   height: auto;
 }
+
 .transparency {
   display: none;
   position: fixed;
@@ -247,10 +247,12 @@ img {
 .transparency.active {
   display: block;
 }
+
 @media screen and (max-width: 1050px) {
   .header {
     width: 826px;
   }
+
   .header .signature {
     margin-left: 146px;
   }
@@ -264,15 +266,12 @@ img {
 
 @media screen and (max-width: 850px) {
   .header {
-    width: auto; /*width:100%;*/
+    width: auto;
     height: 72px;
   }
   .header .social {
     margin: 23px 0 24px 20px;
     width: 90px;
-  }
-  .header .social .mileage_btn {
-    display: none;
   }
   .header .signature {
     position: absolute;
@@ -282,12 +281,10 @@ img {
     margin-left: -50px;
     width: 100px;
     height: 54px;
-    /* 로고 정중앙 */
   }
   .header .location {
     display: none;
   }
-  /* 오른쪽 lnb 메뉴 숨김 */
   .mobile_tab {
     display: block;
   }
@@ -298,22 +295,27 @@ img {
     margin-top: 0;
   }
 }
+@media screen and (max-width: 550px) {
+  .mileage_btn {
+    display: none;
+  }
+}
 @media screen and (max-width: 350px) {
   .header .social {
     display: none;
   }
   .header .signature {
     left: 0;
-    top: 0p;
+    top: 0;
     margin-left: 12px;
   }
 }
-/* 전체 영역이 움지이는 컨테이너 제작    */
 .container {
   position: relative;
-  left: 0;
-  transition: left 0.4s ease-out;
+  right: 0;
+  transition: right 0.4s ease-out;
 }
+
 .container.active {
-  left: -220px;
+  right: 220px; /* ✅ 메뉴 너비만큼 왼쪽으로 밀림 */
 }
