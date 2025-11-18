@@ -42,6 +42,31 @@ export default function App() {
     [isMenuOpen, showIntro]
   );
 
+  const handleTouchMove = useCallback(
+    (event) => {
+      if (
+        touchStartY.current == null ||
+        wheelLock.current ||
+        isMenuOpen ||
+        showIntro
+      )
+        return;
+
+      const currentY = event.touches[0].clientY;
+      const delta = touchStartY.current - currentY;
+      if (Math.abs(delta) < 50) {
+        return;
+      }
+      wheelLock.current = true;
+      changeSection((prev) => (delta > 0 ? prev + 1 : prev - 1));
+      window.setTimeout(() => {
+        wheelLock.current = false;
+      }, 1000);
+      touchStartY.current = null;
+    },
+    [isMenuOpen, showIntro, changeSection]
+  );
+
   const handleWheel = useCallback((event) => {
     if (wheelLock.current || isMenuOpen || showIntro) {
       return;
@@ -60,6 +85,18 @@ export default function App() {
       wheelLock.current = false;
     }, 1000);
   });
+
+  const handleTouchStart = useCallback(
+    (event) => {
+      if (isMenuOpen || showIntro) return;
+      touchStartY.current = event.touches[0].clientY;
+    },
+    [isMenuOpen, showIntro]
+  );
+
+  const handleTouchEnd = useCallback(() => {
+    touchStartY.current = null;
+  }, []);
 
   const fullCoverStyle = useMemo(
     () => ({
@@ -88,7 +125,13 @@ export default function App() {
         activeIndex={activeSection}
         onSelect={(index) => changeSection(() => index)}
       />
-      <div id="fullpage" onWheel={handleWheel}>
+      <div
+        id="fullpage"
+        onWheel={handleWheel}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div className="full_cover" style={fullCoverStyle}>
           <SectionOne />
           <SectionTwo />
