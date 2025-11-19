@@ -237,8 +237,11 @@ const footerLinks = [
   "Subway Listens",
 ];
 
+const anotherSlides = ["c_01", "c_02", "c_03"];
+
 export default function App() {
   const sliderRef = useRef(null);
+  const anotherSliderRef = useRef(null);
   const [activeMenuIndex, setActiveMenuIndex] = useState(0);
   const sliderSetting = {
     dots: true, //하단의 점 네비게이션 표시
@@ -253,6 +256,17 @@ export default function App() {
     customPaging: () => <button type="button" aria-hidden="true"></button>,
   };
   // 슬라디어 하단(dot) 네비게이션 버튼을 만드는 함수
+  const anotherSliderSettings = {
+    dots: true,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    customPaging: () => <button type="button"></button>,
+    dotsClass: "dot-list-s3",
+  };
   return (
     <div>
       <header>
@@ -436,7 +450,19 @@ export default function App() {
                 </li>
               </ul>
             </div>
-            <div className="cont_04"></div>
+            <div className="cont_04">
+              <Slider ref={anotherSliderRef} {...anotherSliderSettings}>
+                {anotherSlides.map((slideClass, index) => (
+                  <div key={index}>
+                    <a
+                      href="#"
+                      className={`slide-item ${slideClass}`}
+                      aria-label={`contents slide ${index + 1}`}
+                    ></a>
+                  </div>
+                ))}
+              </Slider>
+            </div>
           </div>
         </div>
       </section>
