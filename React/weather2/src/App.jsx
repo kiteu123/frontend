@@ -20,7 +20,7 @@ export default function App() {
     setError("");
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric&lang=kr`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric`
       );
       //http오류체크 추가
       if (!response.ok) {
