@@ -138,7 +138,7 @@
 		<Setting name="Window position and size">0 683 108 1184 876 </Setting>
 		<Setting name="Tab data" sensitive="1">
 			<Tabs>
-				<Tab connected="1" selected="1">
+				<Tab selected="1">
 					<Host>kiteu1234.dothome.co.kr</Host>
 					<Port>21</Port>
 					<Protocol>0</Protocol>
