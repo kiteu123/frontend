@@ -65,7 +65,7 @@ export default function App() {
           추가
         </button>
       </div>
-      <p>Todo List 🏀</p>
+      <p>오늘의 할일 🏀</p>
 
       <input
         type="text"
