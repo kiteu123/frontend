@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celestia Cliffside | Private Luxury</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f9f8f6',
+                100: '#f0ede8',
+                200: '#e0dcd3',
+                300: '#cabbb5',
+                400: '#a68e85',
+                500: '#8c7066',
+                600: '#70564e',
+                700: '#5c463f',
+                800: '#4e3c37',
+                900: '#423431',
+              },
+              accent: {
+                500: '#D4AF37', // Gold
+                600: '#B4941F',
+              }
+            },
+            fontFamily: {
+              sans: ['Helvetica Neue', 'Arial', 'sans-serif'],
+              serif: ['Georgia', 'serif'],
+            }
+          },
+        },
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
