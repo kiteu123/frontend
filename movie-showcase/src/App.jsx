@@ -9,106 +9,83 @@ import {
   X,
 } from "lucide-react";
 
-// Sample movie dataset
-// NOTE: In a real app, use an API key and fetch real data from TMDB/OMDB.
-const SAMPLE_MOVIES = [
-  {
-    id: 1,
-    title: "The Last Horizon",
-    year: 2023,
-    genres: ["Sci-Fi", "Adventure"],
-    rating: 8.1,
-    popularity: 91,
-    overview:
-      "In a near future where the sky has changed, a mismatched crew travels beyond the known horizon to find a new home.",
-    poster:
-      "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=800&q=80&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    title: "Cafe Midnight",
-    year: 2021,
-    genres: ["Drama", "Romance"],
-    rating: 7.3,
-    popularity: 67,
-    overview:
-      "A late-night cafe brings together strangers whose stories slowly weave into an unexpected family.",
-    poster:
-      "https://images.unsplash.com/photo-1505685296765-3a2736de412f?w=800&q=80&auto=format&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Heist at Dawn",
-    year: 2019,
-    genres: ["Action", "Thriller"],
-    rating: 7.9,
-    popularity: 82,
-    overview:
-      "A team of specialists plans one last job — but the plan unwinds under unexpected pressures.",
-    poster:
-      "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800&q=80&auto=format&fit=crop",
-  },
-  {
-    id: 4,
-    title: "Starlit Notes",
-    year: 2020,
-    genres: ["Music", "Drama"],
-    rating: 8.5,
-    popularity: 74,
-    overview:
-      "A prodigious musician returns to their hometown and rediscovers the songs they once lost.",
-    poster:
-      "https://images.unsplash.com/photo-1507878866276-a947ef722fee?w=800&q=80&auto=format&fit=crop",
-  },
-  {
-    id: 5,
-    title: "The Silent Forest",
-    year: 2022,
-    genres: ["Horror", "Mystery"],
-    rating: 6.8,
-    popularity: 60,
-    overview:
-      "When a remote village goes silent, a teacher comes to unravel the secret beneath the trees.",
-    poster:
-      "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80&auto=format&fit=crop",
-  },
-  // Additional mock data for variety
-  {
-    id: 6,
-    title: "Echoes of Time",
-    year: 2018,
-    genres: ["Historical", "Drama"],
-    rating: 8.2,
-    popularity: 79,
-    overview:
-      "A journey through history following a single object that changes hands across centuries.",
-    poster:
-      "https://images.unsplash.com/photo-1568992688949-33560f789e90?w=800&q=80&auto=format&fit=crop",
-  },
-  {
-    id: 7,
-    title: "Neon City Run",
-    year: 2024,
-    genres: ["Action", "Sci-Fi"],
-    rating: 8.7,
-    popularity: 95,
-    overview:
-      "High-stakes chase in a vibrant, futuristic metropolis. Every second counts.",
-    poster:
-      "https://images.unsplash.com/photo-1549488337-33f11d1e4e5e?w=800&q=80&auto=format&fit=crop",
-  },
-];
+// ---------------- TMDB API 설정 ----------------
+const API_KEY = "19f402e9d81785323756a59f73521c2a"; // 여기에 TMDB API 키 넣기
+const BASE_URL = "https://api.themoviedb.org/3";
 
-/**
- * Movie Card Component
- * @param {{ movie: object, onOpen: function }} props
- */
+const GENRE_MAP = {
+  28: "Action",
+  12: "Adventure",
+  16: "Animation",
+  35: "Comedy",
+  80: "Crime",
+  99: "Documentary",
+  18: "Drama",
+  10751: "Family",
+  14: "Fantasy",
+  36: "History",
+  27: "Horror",
+  10402: "Music",
+  9648: "Mystery",
+  10749: "Romance",
+  878: "Sci-Fi",
+  10770: "TV Movie",
+  53: "Thriller",
+  10752: "War",
+  37: "Western",
+};
+
+// ---------------- TMDB 훅 ----------------
+function useTMDBMovies(query) {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      setLoading(true);
+      try {
+        const url = query
+          ? `${BASE_URL}/search/movie?api_key=19f402e9d81785323756a59f73521c2a&language=ko-KR&query=${encodeURIComponent(
+              query
+            )}`
+          : `${BASE_URL}/movie/popular?api_key=19f402e9d81785323756a59f73521c2a&language=ko-KR&page=1`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const formatted = data.results.map((m) => ({
+          id: m.id,
+          title: m.title,
+          year: m.release_date ? Number(m.release_date.slice(0, 4)) : 0,
+          genres: m.genre_ids.map((id) => GENRE_MAP[id] || "Unknown"),
+          rating: m.vote_average,
+          popularity: m.popularity,
+          overview: m.overview,
+          poster: m.poster_path
+            ? `https://image.tmdb.org/t/p/w500${m.poster_path}`
+            : "https://placehold.co/600x900/1f2937/ffffff?text=Poster+Missing",
+        }));
+
+        setMovies(formatted);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMovies();
+  }, [query]);
+
+  return { movies, loading };
+}
+
+// ---------------- MovieCard ----------------
 function MovieCard({ movie, onOpen }) {
   const ratingColor = movie.rating >= 8.0 ? "text-yellow-400" : "text-gray-400";
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden cursor-pointer border border-gray-100 dark:border-gray-700">
-      {/* Poster Image Area */}
       <div className="relative pb-[140%] group" onClick={() => onOpen(movie)}>
         <img
           src={movie.poster}
@@ -126,8 +103,6 @@ function MovieCard({ movie, onOpen }) {
           </button>
         </div>
       </div>
-
-      {/* Content */}
       <div className="p-4">
         <div className="flex justify-between items-center mb-2">
           <h3 className="font-bold text-xl truncate text-gray-900 dark:text-gray-50">
@@ -154,10 +129,7 @@ function MovieCard({ movie, onOpen }) {
   );
 }
 
-/**
- * Movie Modal Component
- * @param {{ movie: object | null, onClose: function }} props
- */
+// ---------------- MovieModal ----------------
 function MovieModal({ movie, onClose }) {
   if (!movie) return null;
 
@@ -168,7 +140,7 @@ function MovieModal({ movie, onClose }) {
     >
       <div
         className="relative max-w-4xl w-full bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transition-transform duration-300"
-        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
@@ -179,7 +151,6 @@ function MovieModal({ movie, onClose }) {
         </button>
 
         <div className="md:flex">
-          {/* Poster */}
           <div className="md:w-1/3 flex-shrink-0">
             <img
               src={movie.poster}
@@ -193,7 +164,6 @@ function MovieModal({ movie, onClose }) {
             />
           </div>
 
-          {/* Content */}
           <div className="p-6 md:p-8 md:w-2/3">
             <h2 className="text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">
               {movie.title}
@@ -244,11 +214,11 @@ function MovieModal({ movie, onClose }) {
   );
 }
 
-/**
- * Main Application Component
- */
+// ---------------- App ----------------
 export default function App() {
   const [query, setQuery] = useState("");
+  const { movies, loading } = useTMDBMovies(query);
+
   const [selectedGenre, setSelectedGenre] = useState("All");
   const [sortBy, setSortBy] = useState("popularity");
   const [yearRange, setYearRange] = useState([
@@ -256,10 +226,8 @@ export default function App() {
     new Date().getFullYear() + 1,
   ]);
   const [openMovie, setOpenMovie] = useState(null);
-  const [movies] = useState(SAMPLE_MOVIES);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Effect to manage Dark Mode class on HTML element
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
@@ -271,7 +239,9 @@ export default function App() {
   const genres = useMemo(() => {
     const s = new Set();
     movies.forEach((m) => m.genres.forEach((g) => s.add(g)));
-    return ["All", ...Array.from(s)].sort();
+
+    const sortedGenres = Array.from(s).sort();
+    return ["All", ...sortedGenres];
   }, [movies]);
 
   const filtered = useMemo(() => {
@@ -291,31 +261,22 @@ export default function App() {
 
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
 
-  // Ensure year range inputs are valid numbers
   const handleYearChange = (index, value) => {
     const newYear = Number(value);
     if (isNaN(newYear)) return;
-
-    if (index === 0) {
-      setYearRange([newYear, yearRange[1]]);
-    } else {
-      setYearRange([yearRange[0], newYear]);
-    }
+    if (index === 0) setYearRange([newYear, yearRange[1]]);
+    else setYearRange([yearRange[0], newYear]);
   };
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
-      {/* Header & Search Bar */}
+      {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg shadow-md">
         <div className="max-w-7xl mx-auto p-4 flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Title */}
-          <div className="flex-shrink-0">
-            <h1 className="text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">
-              🎬 MOVIE SHOWCASE
-            </h1>
-          </div>
+          <h1 className="text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">
+            🎬 MOVIE SHOWCASE
+          </h1>
 
-          {/* Search Input */}
           <div className="w-full max-w-lg relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input
@@ -326,7 +287,6 @@ export default function App() {
             />
           </div>
 
-          {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
@@ -341,12 +301,12 @@ export default function App() {
         </div>
       </header>
 
+      {/* Main */}
       <main className="max-w-7xl mx-auto p-6">
         {/* Filter Section */}
         <section className="mb-8 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-4">
-              {/* Genre Filter */}
               <div className="relative">
                 <select
                   className="appearance-none block w-full bg-gray-100 dark:bg-gray-700 border-none rounded-lg py-2 px-4 pr-8 text-sm font-medium focus:ring-2 focus:ring-indigo-500 outline-none cursor-pointer transition"
@@ -362,7 +322,6 @@ export default function App() {
                 <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none text-gray-500" />
               </div>
 
-              {/* Sort By Filter */}
               <div className="relative">
                 <select
                   className="appearance-none block w-full bg-gray-100 dark:bg-gray-700 border-none rounded-lg py-2 px-4 pr-8 text-sm font-medium focus:ring-2 focus:ring-indigo-500 outline-none cursor-pointer transition"
@@ -377,7 +336,6 @@ export default function App() {
               </div>
             </div>
 
-            {/* Year Range Filter */}
             <div className="flex items-center gap-3 text-sm">
               <label className="text-gray-600 dark:text-gray-300 font-medium">
                 개봉 연도:
@@ -397,6 +355,7 @@ export default function App() {
               />
             </div>
           </div>
+
           <div className="mt-4 text-sm text-gray-600 dark:text-gray-300 font-medium">
             <span className="text-indigo-600 dark:text-indigo-400 font-bold">
               {filtered.length}
@@ -405,9 +364,11 @@ export default function App() {
           </div>
         </section>
 
-        {/* Movie Grid Section */}
+        {/* Movie Grid */}
         <section>
-          {filtered.length > 0 ? (
+          {loading ? (
+            <p className="text-center py-12">영화를 불러오는 중...</p>
+          ) : filtered.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
               {filtered.map((m) => (
                 <MovieCard key={m.id} movie={m} onOpen={setOpenMovie} />
