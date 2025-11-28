@@ -262,8 +262,15 @@ export default function App() {
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
 
   const handleYearChange = (index, value) => {
+    if (value === "") {
+      if (index === 0) setYearRange(["", yearRange[1]]);
+      else setYearRange([yearRange[0], ""]);
+      return;
+    }
+
     const newYear = Number(value);
     if (isNaN(newYear)) return;
+
     if (index === 0) setYearRange([newYear, yearRange[1]]);
     else setYearRange([yearRange[0], newYear]);
   };
