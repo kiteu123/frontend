@@ -1,161 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
+      * {
+        padding: 0;
+        margin: 0;
+      }
 
-        li {
-            list-style: none;
-            float: left;
-            width: 1200px;
-            margin-top: 200px;
+      li {
+        list-style: none;
+        float: left;
+        width: 1200px;
+        margin-top: 200px;
+      }
 
-        }
+      h1 {
+        text-align: center;
+      }
 
+      #banner_wrap {
+        width: 1200px;
+        height: 500px;
+        background-color: grey;
+        margin: 0 auto;
+        border: 1px solid #aaa;
+        position: relative;
+      }
 
-        h1 {
-            text-align: center;
-        }
+      #banner {
+        width: 1200px;
+      }
 
-        #banner_wrap {
-            width: 1200px;
-            height: 500px;
-            background-color: grey;
-            margin: 0 auto;
-            border: 1px solid #aaa;
-            position: relative;
-        }
+      #frame {
+        width: 1200px;
+        overflow: hidden;
+      }
 
-        #banner {
-            width: 1200px;
-        }
+      .next {
+        position: absolute;
+        bottom: 150px;
+        right: 10px;
+      }
 
-        #frame {
-            width: 1200px;
-            overflow: hidden;
-        }
-
-        .next {
-            position: absolute;
-            bottom: 150px;
-            right: 10px;
-        }
-
-        .prev {
-            position: absolute;
-            bottom: 150px;
-            left: 10px;
-        }
+      .prev {
+        position: absolute;
+        bottom: 150px;
+        left: 10px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div id="banner_wrap">
-        <div id="frame">
-            <ul id="banner">
-                <li><a href="#"><img src="img/slide1.jpg" alt=""></a></li>
-                <li><a href="#"><img src="img/slide2.jpg" alt=""></a></li>
-                <li><a href="#"><img src="img/slide3.jpg" alt=""></a></li>
-            </ul>
-        </div>
-        <p>
-            <a href="#" class="prev"><img src="img/prev_btn.png" alt=""></a>
-            <a href="#" class="next"><img src="img/next_btn.png" alt=""></a>
-        </p>
+      <div id="frame">
+        <ul id="banner">
+          <li>
+            <a href="#"><img src="img/slide1.jpg" alt="" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="img/slide2.jpg" alt="" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="img/slide3.jpg" alt="" /></a>
+          </li>
+        </ul>
+      </div>
+      <p>
+        <a href="#" class="prev"><img src="img/prev_btn.png" alt="" /></a>
+        <a href="#" class="next"><img src="img/next_btn.png" alt="" /></a>
+      </p>
     </div>
-</body>
-<script>
-    let list = document.getElementById('banner');
-    let listLi = document.querySelectorAll('#banner li');
+  </body>
+  <script>
+    let list = document.getElementById("banner");
+    let listLi = document.querySelectorAll("#banner li");
     let total = listLi.length;
     let li_width = 1200;
     let intervalId;
 
-    list.style.width = li_width * (total + 3) + 'px';
+    list.style.width = li_width * (total + 3) + "px";
 
     for (let i = 0; i < 3; i++) {
-        let copyObj = listLi[i].cloneNode(true);
-        list.append(copyObj);
+      let copyObj = listLi[i].cloneNode(true);
+      list.append(copyObj);
     }
 
     let num = 0;
 
     function autoPlay() {
-        if (num === total) {
-            num = 0;
-            list.style.transition = 'none';
-            list.style.marginLeft = 0;
-        }
+      if (num === total) {
+        num = 0;
+        list.style.transition = "none";
+        list.style.marginLeft = 0;
+      }
 
-        setTimeout(function () {
-            num++;
-            list.style.transition = 'margin-left 0.5s';
-            list.style.marginLeft = -li_width * num + 'px';
-        }, 50);
+      setTimeout(function () {
+        num++;
+        list.style.transition = "margin-left 0.5s";
+        list.style.marginLeft = -li_width * num + "px";
+      }, 50);
     }
     function startAutoPlay() {
-        intervalId = setInterval(autoPlay, 3000);
+      intervalId = setInterval(autoPlay, 3000);
     }
 
     function stopAutoPlay() {
-        clearInterval(intervalId);
+      clearInterval(intervalId);
     }
 
     startAutoPlay();
 
-    document.querySelector('.next').addEventListener('click', function (e) {
-        e.preventDefault();
-        stopAutoPlay();
+    document.querySelector(".next").addEventListener("click", function (e) {
+      e.preventDefault();
+      stopAutoPlay();
 
-        if (num === total) {
-            num = 0;
-            list.style.transition = 'none';
-            list.style.marginLeft = 0;
-        }
+      if (num === total) {
+        num = 0;
+        list.style.transition = "none";
+        list.style.marginLeft = 0;
+      }
 
-        setTimeout(function () {
-            num++;
-            list.style.transition = 'margin-left 0.5s';
-            list.style.marginLeft = -li_width * num + 'px';
-        }, 50);
+      setTimeout(function () {
+        num++;
+        list.style.transition = "margin-left 0.5s";
+        list.style.marginLeft = -li_width * num + "px";
+      }, 50);
 
-        setTimeout(startAutoPlay, 3000);
+      setTimeout(startAutoPlay, 3000);
     });
 
+    document.querySelector(".prev").addEventListener("click", function (e) {
+      e.preventDefault();
+      stopAutoPlay();
 
-    document.querySelector('.prev').addEventListener('click', function (e) {
-        e.preventDefault();
-        stopAutoPlay();
+      if (num === 0) {
+        num = total;
+        list.style.transition = "none";
+        list.style.marginLeft = -li_width * num + "px";
+      }
 
-        if (num === 0) {
-            num = total;
-            list.style.transition = 'none';
-            list.style.marginLeft = -li_width * num + 'px';
-        }
+      setTimeout(function () {
+        num--;
+        list.style.transition = "margin-left 0.5s";
+        list.style.marginLeft = -li_width * num + "px";
+      }, 50);
 
-        setTimeout(function () {
-            num--;
-            list.style.transition = 'margin-left 0.5s';
-            list.style.marginLeft = -li_width * num + 'px';
-        }, 50);
-
-        setTimeout(startAutoPlay, 3000);
+      setTimeout(startAutoPlay, 3000);
     });
-
-
-
-
-
-
-
-</script>
-
+  </script>
 </html>
