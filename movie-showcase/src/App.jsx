@@ -36,7 +36,10 @@ const GENRE_MAP = {
 };
 
 // ---------------- TMDB 훅 ----------------
-function useTMDBMovies(query) {
+function useTMDBMovies(
+  query,
+  yearRange = [2000, new Date().getFullYear() + 1]
+) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -44,11 +47,19 @@ function useTMDBMovies(query) {
     const fetchMovies = async () => {
       setLoading(true);
       try {
-        const url = query
-          ? `${BASE_URL}/search/movie?api_key=19f402e9d81785323756a59f73521c2a&language=ko-KR&query=${encodeURIComponent(
-              query
-            )}`
-          : `${BASE_URL}/movie/popular?api_key=19f402e9d81785323756a59f73521c2a&language=ko-KR&page=1`;
+        let url = "";
+
+        if (query) {
+          // 검색어가 있으면 검색 API
+          url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=ko-KR&query=${encodeURIComponent(
+            query
+          )}`;
+        } else {
+          // 검색어 없으면 연도 범위 기반 Discover API
+          const fromDate = `${yearRange[0]}-01-01`;
+          const toDate = `${yearRange[1]}-12-31`;
+          url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=ko-KR&sort_by=popularity.desc&primary_release_date.gte=${fromDate}&primary_release_date.lte=${toDate}`;
+        }
 
         const res = await fetch(url);
         const data = await res.json();
@@ -75,7 +86,7 @@ function useTMDBMovies(query) {
     };
 
     fetchMovies();
-  }, [query]);
+  }, [query, yearRange]);
 
   return { movies, loading };
 }
@@ -217,14 +228,15 @@ function MovieModal({ movie, onClose }) {
 // ---------------- App ----------------
 export default function App() {
   const [query, setQuery] = useState("");
-  const { movies, loading } = useTMDBMovies(query);
-
-  const [selectedGenre, setSelectedGenre] = useState("All");
-  const [sortBy, setSortBy] = useState("popularity");
   const [yearRange, setYearRange] = useState([
     2000,
     new Date().getFullYear() + 1,
   ]);
+  const { movies, loading } = useTMDBMovies(query, yearRange);
+
+  const [selectedGenre, setSelectedGenre] = useState("All");
+  const [sortBy, setSortBy] = useState("popularity");
+
   const [openMovie, setOpenMovie] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -250,7 +262,11 @@ export default function App() {
       .filter((m) =>
         selectedGenre === "All" ? true : m.genres.includes(selectedGenre)
       )
-      .filter((m) => m.year >= yearRange[0] && m.year <= yearRange[1])
+      .filter((m) => {
+        const fromYear = yearRange[0] === "" ? -Infinity : Number(yearRange[0]);
+        const toYear = yearRange[1] === "" ? Infinity : Number(yearRange[1]);
+        return m.year >= fromYear && m.year <= toYear;
+      })
       .sort((a, b) => {
         if (sortBy === "popularity") return b.popularity - a.popularity;
         if (sortBy === "year") return b.year - a.year;
