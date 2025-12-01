@@ -79,6 +79,13 @@ const WeatherApp = () => {
   const [preferenceIndex, setPreferenceIndex] = useState(0);
 
   useEffect(() => {
+    if (!window.Kakao) return;
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init("6f92e2869b88f2373826e1ec15e5061c"); // 여기 JavaScript 키로 바꿔주세요
+    }
+  }, []);
+
+  useEffect(() => {
     if (!navigator.geolocation) {
       alert("이 브라우저에서는 위치 정보를 사용할 수 없습니다.");
       return;
@@ -138,6 +145,32 @@ const WeatherApp = () => {
     );
   }, [effectiveTemp]);
 
+  const shareToKakao = () => {
+    if (!window.Kakao || !window.Kakao.isInitialized()) return;
+
+    window.Kakao.Link.sendDefault({
+      objectType: "feed",
+      content: {
+        title: "오늘 뭐 입지?",
+        description: `${dateStr} ${locationName} ${currentTemp}°C\n이렇게 입으면 딱 적당해요!`,
+        imageUrl: "https://i.ibb.co/7CQVJNm/weather.png", // 공유할 이미지 URL
+        link: {
+          mobileWebUrl: window.location.href,
+          webUrl: window.location.href,
+        },
+      },
+      buttons: [
+        {
+          title: "앱에서 확인하기",
+          link: {
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href,
+          },
+        },
+      ],
+    });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-emerald-100 font-sans p-4">
       <div className="w-full max-w-md bg-white rounded-[40px] shadow-2xl overflow-hidden relative border-4 border-emerald-50">
@@ -155,7 +188,10 @@ const WeatherApp = () => {
             <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-md flex items-center gap-1">
               <span>🍃 {dateStr}</span>
             </div>
-            <button className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+            <button
+              className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+              onClick={shareToKakao}
+            >
               <Share2 className="w-5 h-5 text-gray-600" />
             </button>
           </div>
