@@ -132,9 +132,9 @@ export default function App() {
                 </span>
                 <span style={styles.date}>{date}</span>
               </div>
-              <button onClick={() => deleteTodo(id)} style={styles.deleteBtn}>
+              {/* <button onClick={() => deleteTodo(id)} style={styles.deleteBtn}>
                 삭제
-              </button>
+              </button> */}
             </li>
           ))
         ) : (
