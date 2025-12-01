@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kakao Map App</title>
+
+    <!-- 📌 카카오맵 스크립트 필수 -->
+    <script
+      type="text/javascript"
+      src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=6f92e2869b88f2373826e1ec15e5061c&libraries=services"
+    ></script>
+  </head>
+  <script>
+    console.log("INDEX HTML LOADED");
+  </script>
+  <body>
+    <!-- 📌 React가 붙을 root -->
+    <div id="root"></div>
+
+    <!-- 📌 Vite entry -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
