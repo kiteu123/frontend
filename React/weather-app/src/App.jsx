@@ -1,312 +1,434 @@
-import React, { useState, useMemo, useEffect } from "react";
-import { Share2, MapPin, Info } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { MapPinned, ThermometerSun } from "lucide-react";
+import { IoWaterSharp, IoSunnyOutline } from "react-icons/io5";
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import { FiWind } from "react-icons/fi";
+import "./App.css";
 
-/**
- * 👕 옷차림 데이터베이스
- */
-const CLOTHING_RULES = [
+const clothingOptions = [
   {
-    id: "scorching",
-    minTemp: 28,
-    maxTemp: 50,
-    top: { name: "민소매", color: "bg-yellow-100", icon: "🎽" },
-    outer: { name: "없음", color: "bg-transparent", icon: "❌" },
-    desc: "무더운 날씨예요! 최대한 시원하게 입으세요.",
+    range: [-20, 0],
+    label: "추운 날씨",
+    items: [
+      {
+        name: "두꺼운 패딩",
+        image: "/images/패딩.jfif",
+      },
+      {
+        name: "롱코트",
+        image: "/images/롱코트.jfif",
+      },
+      {
+        name: "목도리",
+        image: "/images/목도리.jfif",
+      },
+      {
+        name: "기모 바지",
+        image: "/images/기모바지.jfif",
+      },
+      {
+        name: "부츠",
+        image: "/images/어그부츠.jfif",
+      },
+    ],
+    description: "추운 겨울을 위한 옷",
   },
   {
-    id: "hot",
-    minTemp: 23,
-    maxTemp: 27,
-    top: { name: "반팔티", color: "bg-white", icon: "👕" },
-    outer: { name: "없음", color: "bg-transparent", icon: "❌" },
-    desc: "여름 날씨입니다. 얇은 옷차림이 좋아요.",
+    range: [1, 9],
+    label: "쌀쌀한 날씨",
+    items: [
+      {
+        name: "자켓",
+        image: "/images/자켓.jfif",
+      },
+      {
+        name: "니트",
+        image: "/images/니트.jfif",
+      },
+      {
+        name: "청바지",
+        image: "/images/청바지.jfif",
+      },
+      {
+        name: "운동화",
+        image: "/images/운동화.jfif",
+      },
+    ],
+    description: "쌀쌀한 날씨를 위한 옷",
   },
   {
-    id: "warm",
-    minTemp: 20,
-    maxTemp: 22,
-    top: { name: "반팔티", color: "bg-purple-100", icon: "👕" },
-    outer: { name: "얇은 셔츠", color: "bg-blue-100", icon: "👔" },
-    desc: "활동하기 좋은 날씨! 얇은 걸치기 좋은 옷을 챙기세요.",
+    range: [10, 20],
+    label: "적당한 날씨",
+    items: [
+      {
+        name: "맨투맨",
+        image: "/images/맨투맨.jfif",
+      },
+      {
+        name: "긴바지",
+        image: "/images/긴바지.jfif",
+      },
+      {
+        name: "스니커즈",
+        image: "/images/스니커즈.jfif",
+      },
+    ],
+    description: "적당한 두께의 옷",
   },
   {
-    id: "cool",
-    minTemp: 17,
-    maxTemp: 19,
-    top: { name: "긴팔티", color: "bg-gray-100", icon: "👕" },
-    outer: { name: "바람막이", color: "bg-blue-400", icon: "🧥" },
-    desc: "일교차가 클 수 있어요. 겉옷이 필수입니다.",
+    range: [21, 29],
+    label: "조금 더운 날씨",
+    items: [
+      {
+        name: "반팔",
+        image: "/images/반팔티.jfif",
+      },
+      {
+        name: "얇은 바지",
+        image: "/images/얇은바지.jfif",
+      },
+      {
+        name: "샌들",
+        image: "/images/샌들.jfif",
+      },
+    ],
+    description: "가볍고 시원한 옷",
   },
   {
-    id: "chilly",
-    minTemp: 12,
-    maxTemp: 16,
-    top: { name: "맨투맨", color: "bg-indigo-100", icon: "👕" },
-    outer: { name: "가디건", color: "bg-orange-100", icon: "🥼" },
-    desc: "쌀쌀해요. 니트나 가디건을 추천해요.",
-  },
-  {
-    id: "cold",
-    minTemp: 9,
-    maxTemp: 11,
-    top: { name: "니트", color: "bg-green-100", icon: "🧶" },
-    outer: { name: "트렌치코트", color: "bg-amber-700", icon: "🧥" },
-    desc: "본격적인 추위가 시작됩니다. 코트를 입으세요.",
-  },
-  {
-    id: "freezing",
-    minTemp: 5,
-    maxTemp: 8,
-    top: { name: "히트텍", color: "bg-gray-800", icon: "🔥" },
-    outer: { name: "패딩", color: "bg-gray-300", icon: "🧥" },
-    desc: "매우 추워요! 패딩과 내복으로 무장하세요.",
-  },
-  {
-    id: "freezing_cold",
-    minTemp: -50,
-    maxTemp: 4,
-    top: { name: "장갑", color: "bg-gray-800", icon: "🧤" },
-    outer: { name: "목도리", color: "bg-gray-300", icon: "🧣" },
-    desc: "매우 추워요! 장갑과 목도리로 무장하세요.",
+    range: [30, 40],
+    label: "무더운 날씨",
+    items: [
+      {
+        name: "민소매",
+        image: "/images/나시티.jfif",
+      },
+      {
+        name: "반바지",
+        image: "/images/반바지.jfif",
+      },
+      {
+        name: "슬리퍼",
+        image: "/images/슬리퍼.jfif",
+      },
+    ],
+    description: "무더운 여름을 위한 옷",
   },
 ];
 
-const API_KEY = "c913076005907aa5d79cd0fdc643b55d"; // 여기에 실제 API 키를 넣으세요.
+// 현재 온도 기준 슬라이더 초기값
+const tempToSlider = (t) => {
+  if (t <= 0) return 10;
+  if (t <= 9) return 30;
+  if (t <= 20) return 50;
+  if (t <= 29) return 70;
+  return 90;
+};
 
-const WeatherApp = () => {
-  const [currentTemp, setCurrentTemp] = useState(null);
-  const [locationName, setLocationName] = useState("불러오는 중…");
-  const [preferenceIndex, setPreferenceIndex] = useState(0);
+export default function ToWear() {
+  const [temp, setTemp] = useState(null);
+  const [location, setLocation] = useState("위치 불러오는 중...");
+  const [sliderValue, setSliderValue] = useState(tempToSlider(temp));
+  const [airQuality, setAirQuality] = useState(null);
+  const [uvIndex, setUvIndex] = useState(null);
+  const [humidity, setHumidity] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [originalLocationDoc, setOriginalLocationDoc] = useState(null);
+
+  const formatAirQuality = (aqi) => {
+    switch (aqi) {
+      case 1:
+        return "좋음";
+      case 2:
+        return "보통";
+      case 3:
+        return "약간 나쁨";
+      case 4:
+        return "나쁨";
+      case 5:
+        return "매우 나쁨";
+      default:
+        return "-";
+    }
+  };
+
+  const formatUVIndex = (uv) => {
+    if (uv < 3) return "낮음";
+    if (uv < 6) return "보통";
+    if (uv < 8) return "높음";
+    if (uv < 11) return "매우 높음";
+    return "위험";
+  };
+
+  const formatLocationByWidth = (doc, width) => {
+    if (!doc) return "위치 불러오는 중...";
+
+    let locationString = doc.region_1depth_name;
+
+    if (width > 1194) {
+      locationString += ` ${doc.region_2depth_name || ""} ${
+        doc.region_3depth_name || ""
+      }`;
+    } else if (width > 874) {
+      locationString += ` ${doc.region_2depth_name || ""}`;
+    } else if (width > 768) {
+    } else {
+      if (width > 378) {
+        locationString += ` ${doc.region_2depth_name || ""} ${
+          doc.region_3depth_name || ""
+        }`;
+      } else if (width > 303) {
+        locationString += ` ${doc.region_2depth_name || ""}`;
+      } else {
+      }
+    }
+
+    return locationString.trim();
+  };
 
   useEffect(() => {
-    if (!window.Kakao) return;
-    if (!window.Kakao.isInitialized()) {
-      window.Kakao.init("6f92e2869b88f2373826e1ec15e5061c"); // 여기 JavaScript 키로 바꿔주세요
-    }
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   useEffect(() => {
-    if (!navigator.geolocation) {
-      alert("이 브라우저에서는 위치 정보를 사용할 수 없습니다.");
-      return;
+    if (originalLocationDoc) {
+      setLocation(formatLocationByWidth(originalLocationDoc, windowWidth));
     }
+  }, [windowWidth, originalLocationDoc]);
 
-    navigator.geolocation.getCurrentPosition(
-      async (pos) => {
-        const lat = pos.coords.latitude;
-        const lon = pos.coords.longitude;
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
 
-        const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}&lang=kr`;
-        const weatherRes = await fetch(weatherURL);
-        const weatherData = await weatherRes.json();
+      // 1. 현재 온도 및 습도
+      const weatherRes = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=c913076005907aa5d79cd0fdc643b55d`
+      );
+      const weatherData = await weatherRes.json();
+      setTemp(Math.round(weatherData.main.temp));
+      setHumidity(weatherData.main.humidity);
 
-        setCurrentTemp(Math.round(weatherData.main.temp));
+      // 2. 미세먼지
+      const airRes = await fetch(
+        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=c913076005907aa5d79cd0fdc643b55d`
+      );
+      const airData = await airRes.json();
+      setAirQuality(formatAirQuality(airData.list[0].main.aqi)); // 1~5
 
-        const kakaoURL = `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${lon}&y=${lat}`;
-        const kakaoRes = await fetch(kakaoURL, {
+      // 3. UV 지수
+      const uvRes = await fetch(
+        `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=c913076005907aa5d79cd0fdc643b55d`
+      );
+      const uvData = await uvRes.json();
+      setUvIndex(formatUVIndex(uvData.value));
+
+      const kakaoRes = await fetch(
+        `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${lon}&y=${lat}`,
+        {
           headers: {
             Authorization: `KakaoAK fa404c9f620f1b5af3192f1def32356a`,
           },
-        });
-
-        const kakaoData = await kakaoRes.json();
-        let address = "위치 불러오기 실패";
-        if (kakaoData.documents?.length > 0) {
-          address = kakaoData.documents[0].address.address_name;
         }
-        setLocationName(address);
-      },
-      (err) => {
-        console.error(err);
-        alert("위치 정보를 불러오지 못했습니다.");
+      );
+      const kakaoData = await kakaoRes.json();
+      const doc = kakaoData.documents?.[0];
+
+      if (doc) {
+        setOriginalLocationDoc(doc);
+        setLocation(formatLocationByWidth(doc, window.innerWidth));
+      } else {
+        setLocation("위치 정보 없음");
       }
-    );
+    });
   }, []);
 
-  const today = new Date();
-  const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
-  const dayOfWeek = weekDays[today.getDay()];
-  const dateStr = `${today.getMonth() + 1}/${today.getDate()} (${dayOfWeek})`;
-
-  const handleSliderChange = (e) => {
-    setPreferenceIndex(parseInt(e.target.value));
+  // 슬라이더 구간별 옷 선택
+  const getClothingIndex = () => {
+    if (sliderValue <= 20) return 0;
+    if (sliderValue <= 40) return 1;
+    if (sliderValue <= 60) return 2;
+    if (sliderValue <= 80) return 3;
+    return 4;
   };
 
-  const effectiveTemp = useMemo(() => {
-    if (currentTemp === null) return null;
-    return currentTemp - preferenceIndex * 4;
-  }, [currentTemp, preferenceIndex]);
+  const currentClothes = clothingOptions[getClothingIndex()];
 
-  const recommendedOutfit = useMemo(() => {
-    return (
-      CLOTHING_RULES.find(
-        (rule) => effectiveTemp >= rule.minTemp && effectiveTemp <= rule.maxTemp
-      ) || CLOTHING_RULES[2]
-    );
-  }, [effectiveTemp]);
+  const getGrandientColor = (value) => {
+    if (value <= 50) {
+      const ratio = value / 50;
+      const r = Math.round(70 + (100 - 70) * ratio);
+      const g = Math.round(100 + (150 - 100) * ratio);
+      const b = Math.round(150 + (150 - 150) * ratio);
+      return `rgb(${r}, ${g}, ${b})`;
+    } else {
+      const ratio = (value - 50) / 50;
 
-  const shareToKakao = () => {
-    if (!window.Kakao || !window.Kakao.isInitialized()) return;
+      const r = Math.round(100 + (244 - 100) * ratio);
 
-    window.Kakao.Link.sendDefault({
-      objectType: "feed",
-      content: {
-        title: "오늘 뭐 입지?",
-        description: `${dateStr} ${locationName} ${currentTemp}°C\n이렇게 입으면 딱 적당해요!`,
-        imageUrl: "https://i.ibb.co/7CQVJNm/weather.png", // 공유할 이미지 URL
-        link: {
-          mobileWebUrl: window.location.href,
-          webUrl: window.location.href,
-        },
-      },
-      buttons: [
-        {
-          title: "앱에서 확인하기",
-          link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
-          },
-        },
-      ],
-    });
+      const g = Math.round(150 + (171 - 150) * ratio);
+
+      const b = Math.round(150 + (93 - 150) * ratio);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-emerald-100 font-sans p-4">
-      <div className="w-full max-w-md bg-white rounded-[40px] shadow-2xl overflow-hidden relative border-4 border-emerald-50">
-        {/* Header */}
-        <div className="bg-emerald-200/30 p-4 pb-2">
-          <h1 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-            오늘 뭐 입지?
-          </h1>
+    <div className="towearwrapper">
+      <div className="containertowear">
+        <div className="app-header">
+          {/* <div className="back-button" onClick={() => navigate("/")}>
+          ←
+        </div> */}
+          <h1 className="title">오늘의 옷 추천</h1>
+          <div className="right-space"></div>
+        </div>
+        <div className="weather-wrapper">
+          <div className="card temp-card">
+            {/* <h2>오늘 기온</h2> */}
+            <h3>
+              <MapPinned /> {location}
+            </h3>
+            <h3>
+              {" "}
+              <ThermometerSun />{" "}
+              {temp !== null ? `${temp}°C` : "날씨 불러오는 중..."}
+            </h3>
+            <h3>
+              {typeof temp === "number"
+                ? temp <= 0
+                  ? "☃ 추운 날씨"
+                  : temp >= 1 && temp <= 15
+                  ? "❄ 쌀쌀한 날씨"
+                  : temp >= 16 && temp <= 25
+                  ? "🙂 적당한 날씨"
+                  : temp >= 26 && temp <= 29
+                  ? "😎 따뜻한 날씨"
+                  : "🥵 무더운 날씨"
+                : "❓"}
+            </h3>
+          </div>
+          <div className="card right-card">
+            <h2>오늘 날씨 정보</h2>
+            <hr className="line" />
+            <ul className="weather-info">
+              <li>
+                <p>
+                  <FiWind /> 미세먼지 :{" "}
+                  {airQuality !== null ? airQuality : "불러오는 중..."}
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <IoSunnyOutline style={{ color: "orange" }} /> 자외선 지수 :{" "}
+                  {uvIndex !== null ? uvIndex : "불러오는 중..."}
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <IoWaterSharp
+                    style={{ width: "18px", height: "18px", color: "blue" }}
+                  />{" "}
+                  습도 : {humidity !== null ? `${humidity}%` : "불러오는 중..."}
+                </p>
+              </li>
+            </ul>
+
+            <div className="hover-text">
+              <p>
+                {typeof temp === "number"
+                  ? temp <= 0
+                    ? "🧣 오늘은 정말 추워요! 따뜻하게 입고 나가세요 🧤"
+                    : temp < 15
+                    ? "🧥 오늘은 조금 쌀쌀해요! 겉옷 챙기는 건 어때요?"
+                    : temp < 25
+                    ? "🍃 선선한 날씨예요! 산책하기 좋은 날씨예요 😊"
+                    : temp < 30
+                    ? "☀️ 따뜻한 날씨예요! 가볍게 입고 나가도 좋아요 😄"
+                    : "🕶️ 무더운 날씨! 시원하게 입고 나가세요 🥤"
+                  : "오늘의 날씨를 기다리는 중..."}
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* Scrollable Content Area */}
-        <div className="px-6 py-2 pb-32">
-          {/* Status Badge */}
-          <div className="flex justify-between items-start mb-2">
-            <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-md flex items-center gap-1">
-              <span>🍃 {dateStr}</span>
+        <div className="clothes-description">
+          <h2>{currentClothes.description}</h2>
+        </div>
+
+        <div className="clothes-cards">
+          {currentClothes.items.slice(0, 5).map((item, idx) => (
+            <div className="card clothes-card" key={idx}>
+              <img src={item.image} alt={item.name} className="clothes-image" />
+              <p className="card-name">{item.name}</p>
             </div>
+          ))}
+        </div>
+
+        <div className="slider-box">
+          <div className="slider-labels">
+            <span>두꺼운 옷</span>
+            <span>얇은 옷</span>
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={sliderValue}
+            onChange={(e) => setSliderValue(Number(e.target.value))}
+            className="slider"
+          />
+          <div className="slider-buttons">
             <button
-              className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
-              onClick={shareToKakao}
+              type="button"
+              className="slider-btn left-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                setSliderValue((v) => Math.max(v - 25, 0));
+              }}
             >
-              <Share2 className="w-5 h-5 text-gray-600" />
+              <FaLongArrowAltLeft />
+            </button>
+            <button
+              type="button"
+              className="slider-btn right-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                setSliderValue((v) => Math.min(v + 25, 100));
+              }}
+            >
+              <FaLongArrowAltRight />
             </button>
           </div>
-
-          {/* Location */}
-          <div className="flex items-center gap-1 text-gray-500 text-sm mb-1">
-            <MapPin className="w-4 h-4" />
-            <span>
-              {locationName} {currentTemp !== null && ` · ${currentTemp}°C`}
-            </span>
-          </div>
-
-          {/* Main Title */}
-          <h2 className="text-2xl font-bold text-gray-800 mb-8 mt-2">
-            이렇게 입으면 딱 적당해요!
-          </h2>
-
-          {/* Clothing Visuals */}
-          <div className="flex justify-center items-end gap-6 mb-10 relative">
-            <button className="absolute top-0 right-0 text-gray-400 hover:text-gray-600"></button>
-
-            {/* Top */}
-            <div className="flex flex-col items-center gap-3 transition-all duration-500 transform">
-              <div
-                className={`w-32 h-32 ${recommendedOutfit.top.color} rounded-3xl shadow-sm flex items-center justify-center text-6xl relative overflow-hidden group`}
-              >
-                <span className="group-hover:scale-110 transition-transform">
-                  {recommendedOutfit.top.icon}
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/40 to-transparent pointer-events-none"></div>
-              </div>
-              <span className="font-bold text-gray-700">
-                {recommendedOutfit.top.name}
-              </span>
-            </div>
-
-            {/* Outer */}
-            {recommendedOutfit.outer.name !== "없음" && (
-              <div className="flex flex-col items-center gap-3 transition-all duration-500 transform animate-fade-in-up">
-                <div
-                  className={`w-32 h-32 ${recommendedOutfit.outer.color} rounded-3xl shadow-sm flex items-center justify-center text-6xl relative overflow-hidden group`}
-                >
-                  <span className="group-hover:scale-110 transition-transform">
-                    {recommendedOutfit.outer.icon}
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/40 to-transparent pointer-events-none"></div>
-                </div>
-                <span className="font-bold text-gray-700">
-                  {recommendedOutfit.outer.name}
-                </span>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Bottom Floating Control */}
-        <div className="absolute bottom-0 left-0 right-0 bg-white p-6 rounded-t-[40px] shadow-[0_-5px_20px_rgba(0,0,0,0.1)] z-50">
-          <div className="flex items-center justify-between px-2 mb-2 relative">
-            <input
-              type="range"
-              min="-2"
-              max="2"
-              step="1"
-              value={preferenceIndex}
-              onChange={handleSliderChange}
-              className="absolute w-full h-full opacity-0 z-30 cursor-pointer"
-            />
-            <div className="w-full flex justify-between items-center text-lg font-bold text-gray-800 select-none relative z-20">
-              <div
-                className={`transition-all duration-300 flex items-center gap-1 ${
-                  preferenceIndex === -2
-                    ? "text-gray-900 scale-110"
-                    : "text-gray-400"
-                }`}
-              >
-                <span>더워요</span>
-              </div>
-              <div className="absolute left-0 right-0 flex justify-center pointer-events-none z-10">
-                <div
-                  className={`px-6 py-3 rounded-full text-white font-bold shadow-lg transition-all duration-300 ${
-                    preferenceIndex === 0
-                      ? "bg-[#6ED676] scale-100"
-                      : "bg-gray-300 scale-90 text-gray-500"
-                  }`}
-                  style={{ transform: `translateX(${preferenceIndex * 60}px)` }}
-                >
-                  {preferenceIndex === 0
-                    ? "쾌적해요!"
-                    : preferenceIndex > 0
-                    ? "추워요"
-                    : "더워요"}
-                </div>
-              </div>
-              <div
-                className={`transition-all duration-300 flex items-center gap-1 ${
-                  preferenceIndex === 2
-                    ? "text-gray-900 scale-110"
-                    : "text-gray-400"
-                }`}
-              >
-                <span>추워요</span>
-              </div>
-            </div>
-          </div>
-          <p className="text-center text-xs text-gray-400 mt-3">
-            {preferenceIndex === 0
-              ? "현재 날씨에 딱 맞는 옷차림입니다."
-              : preferenceIndex > 0
-              ? "옷이 얇게 느껴지시나요? 더 따뜻한 옷을 보여드릴게요."
-              : "옷이 두껍게 느껴지시나요? 더 시원한 옷을 보여드릴게요."}
+          <p
+            className="slider-label"
+            style={{
+              left: `calc(${sliderValue}% -12px)`,
+              color: getGrandientColor(sliderValue),
+            }}
+          >
+            슬라이더를 움직여 옷의 두께를 조절하세요
+          </p>
+          <p
+            className="slider-label button-label"
+            style={{
+              left: `calc(${sliderValue}% -12px)`,
+              color: getGrandientColor(sliderValue),
+            }}
+          >
+            버튼을 눌러 옷의 두께를 조절하세요
           </p>
         </div>
       </div>
     </div>
   );
-};
-
-export default WeatherApp;
+}
